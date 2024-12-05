@@ -1,0 +1,240 @@
+/* Geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #ffffff;
+}
+
+/* Cabeçalho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.2s, background-color 0.3s;
+  font-size: 30px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-button:hover {
+  background-color: #30d5c8;
+  transform: scale(1.1);
+}
+
+.logo {
+  height: 60px;
+  max-width: 100%;
+  margin: 0 0;
+  vertical-align: middle;
+}
+
+.search-bar input {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #30d5c8;
+  outline: none;
+  font-size: 16px;
+}
+
+.auth-btn {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Arial';
+}
+
+.auth-btn:hover {
+  background-color: #30d5c8;
+}
+
+/* Estilo geral do botão */
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: #ffa500;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+/* Hover e clique no botão */
+.theme-toggle:hover {
+  background-color: #30d5c8;
+  transform: scale(1.1);
+}
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Ícone do botão */
+.theme-toggle .icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Tema escuro */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Estilo do botão no tema escuro */
+body.dark-theme .theme-toggle {
+  background-color: #333333;
+  color: #f0e68c; /* cor da lua */
+}
+
+/* Carrossel */
+.carrossel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.carrossel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 100px; /* Adiciona espaçamento entre as imagens */
+}
+
+.carrossel-track img {
+  width: 400px; /* Define a largura das imagens */
+  height: 500px; /* Define a altura das imagens */
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+
+.carrossel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carrossel-button.prev {
+  left: 10px;
+}
+
+.carrossel-button.next {
+  right: 10px;
+}
+
+/* Estilos para cada seção */
+.EventosEmAlta, .FilmesEmAlta, .EventosProximos, .Estreando, .EmBreve {
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+/* Filmes em Alta - Fundo Turquesa */
+.FilmesEmAlta {
+  background-color: #30d5c8;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: inherit;
+}
+
+/* Imagens quadradas */
+.carrossel-track img {
+  aspect-ratio: 1 / 1;
+}
+
+/* Categorias */
+.category-box {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background-color: #2e2e2e;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Temas */
+body.white-theme {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.header.white-theme {
+  background-color: #ffffff;
+  color: #000;
+}
+
+body.white-theme .theme-button {
+  background-color: #009688;
+  color: #ffffff;
+  border: 1px solid #00796b;
+}
+
+body.black-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.header.black-theme {
+  background-color: #333;
+  color: #ffffff;
+}
+
+body.black-theme .theme-button {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: 1px solid #333;
+}

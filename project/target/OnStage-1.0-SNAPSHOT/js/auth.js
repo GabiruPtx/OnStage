@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             // Envia os dados para o servidor
-            const response = await fetch('/your-context-root/auth', {
+            const response = await fetch('/OnStage_war/auth', {
                 method: 'POST',                    // Tipo de requisição
                 headers: {
                     'Content-Type': 'application/json'  // Formato dos dados
@@ -26,19 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Se deu tudo certo com a requisição
             if (response.ok) {
-                const data = await response.json();
-                // Guarda informação de que o usuário está logado
-                localStorage.setItem('userToken', data.token);
                 // Redireciona para a página principal
                 window.location.href = 'index.html';
             } else {
                 // Se algo deu errado, mostra mensagem de erro
-                alert('Credenciais inválidas');
+                alert('Login falhou');
             }
         } catch (error) {
             // Se houver algum erro na comunicação com o servidor
-            console.error('Erro:', error);
-            alert('Erro ao realizar login');
+            alert('Erro ao fazer login');
         }
     });
 });

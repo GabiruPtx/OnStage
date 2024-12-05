@@ -6,9 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import ufrrj.aps.onstage.util.DBConnection;
 import ufrrj.aps.onstage.util.LoginRequest;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,32 +48,36 @@ public class AuthenticationServlet extends HttpServlet {
         }
     }
 
-    private boolean isValidUser(LoginRequest loginRequest) {
-
+    private String hashPassword(String password) {
         try {
-            // Conecta ao banco de dados
-            Connection conn = getConnection();
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            return no.toString(16);
+        } catch (Exception e) {
+            return password; // fallback para caso algo dê errado
+        }
+    }
 
-            // Prepara a consulta SQL
+    private boolean isValidUser(LoginRequest loginRequest) {
+        try (Connection conn = DBConnection.getConection()) {
+            if (conn == null) {
+                throw new SQLException("Falha na conexão com o banco");
+            }
+
             PreparedStatement stmt = conn.prepareStatement(
                     "SELECT * FROM users WHERE email = ? AND password = ?"
             );
 
-            // Define os parâmetros
             stmt.setString(1, loginRequest.getEmail());
             stmt.setString(2, hashPassword(loginRequest.getPassword()));
 
-            // Executa a consulta
             ResultSet rs = stmt.executeQuery();
-
-            // Verifica se encontrou o usuário
             return rs.next();
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        return "usuario@teste.com".equals(loginRequest.getEmail()) &&
-                "senha123".equals(loginRequest.getPassword());
     }
-
 }

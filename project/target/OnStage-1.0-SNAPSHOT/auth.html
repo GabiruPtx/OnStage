@@ -1,27 +1,106 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="../js/auth.js" defer></script>
-    <title>OnStage - Login</title>
+    <link rel="stylesheet" href="css/a.css">
+    <script src="js/auth.js" defer></script>
+    <title>Cadastro || Login</title>
 </head>
 <body>
-    <div class="login-container">
-        <form id="loginForm" class="login-form">
-            <h2>Login</h2>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Entrar</button>
-            <p>Não tem uma conta? <a href="register.html">Cadastre-se</a></p>
-        </form>
+
+    <div class="container" id="container">
+        <!-- Formulário de Cadastro -->
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Criar Conta</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use seu e-mail para registro</span>
+                
+                <!-- Dados Pessoais -->
+                <div class="infield">
+                    <input type="text" placeholder="Nome" />
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="Sobrenome" />
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="CPF" />
+                </div>
+                <div class="infield">
+                    <input type="tel" placeholder="Telefone" />
+                </div>
+                <div class="infield">
+                    <input type="email" id= "emailC" placeholder="E-mail" name="email" required/>
+                </div>
+                <div class="infield">
+                    <input type="date" placeholder="Data de Nascimento" />
+                </div>
+                
+                <h2>Endereço</h2>
+                <!-- Endereço -->
+                <div class="infield">
+                    <input type="text" placeholder="Rua" />
+                </div>
+                <div class="infield">
+                    <select name="cidade" id="cidade">
+                        <option value="">Cidade</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Niterói">Niterói</option>
+                        <option value="Duque de Caxias">Duque de Caxias</option>
+                    </select>
+                </div>
+                <div class="infield">
+                    <select name="estado" id="estado">
+                        <option value="">Estado</option>
+                        <option value="RJ">RJ</option>
+                    </select>
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="Bairro" />
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="Logradouro" />
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="Complemento" />
+                </div>
+                <div class="infield">
+                    <input type="text" placeholder="CEP" />
+                </div>
+                <button>Cadastrar</button>
+                <p>Já tem uma conta? <a href="#" class="toggle" id="showLogin">Login</a></p>
+            </form>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Entrar</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use sua conta</span>
+                <div class="infield">
+                    <input type="email" id="email" placeholder="E-mail" name="email" required/>
+                </div>
+                <div class="infield">
+                    <input type="password" id="password" name="password" placeholder="Senha" required/>
+                </div>
+                <a href="#" class="forgot">Esqueceu sua senha?</a>
+                <button>Entrar</button>
+                <p>Não tem uma conta? <a href="#" class="toggle" id="showSignUp">Cadastro</a></p>
+            </form>
+        </div>
+
     </div>
+
 </body>
 </html>

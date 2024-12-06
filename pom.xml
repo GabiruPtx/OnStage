@@ -4,18 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.jboss.weld.servlet</groupId>
-        <artifactId>weld-servlet-parent</artifactId>
-        <version>5.1.0.Final</version>
-        <relativePath> /home/../pom.xml </relativePath>
-    </parent>
-
-    <groupId>ufrrj.aps</groupId>
+    <groupId>aps.onstage</groupId>
     <artifactId>OnStage</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>OnStage</name>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <repositories>
         <repository>
@@ -28,7 +21,6 @@
             <url>https://github.com/GabiruPtx/OnStage.git</url>
         </repository>
     </repositories>
-
 
 
     <properties>

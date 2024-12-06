@@ -1,9 +1,13 @@
 /* Geral */
-* {
+body {
+  font-family: 'Poppins', sans-serif; 
+}*
+
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -102,6 +106,90 @@ body {
   transform: scale(0.95);
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container img {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do container */
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Escurece o fundo */
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.image-container:hover .overlay {
+  opacity: 1; /* Mostra o conteúdo quando o mouse está sobre a imagem */
+}
+
+.overlay h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #30D5C8; /* Cor vibrante para destacar o título */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-family: 'Poppins', sans-serif; /* Fonte personalizada para o título */
+}
+
+.overlay p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ddd;
+  max-width: 90%;
+  line-height: 1.4;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.overlay button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #30D5C8; /* Cor vibrante para o botão */
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.overlay button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+.overlay a {
+  text-decoration: none;
+}
+
 /* Ícone do botão */
 .theme-toggle .icon {
   font-size: 1.5rem;
@@ -111,7 +199,7 @@ body {
 /* Tema escuro */
 body.dark-theme {
   background-color: #121212;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Estilo do botão no tema escuro */
@@ -125,7 +213,6 @@ body.dark-theme .theme-toggle {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
 .carrossel-track {
@@ -145,12 +232,14 @@ body.dark-theme .theme-toggle {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   cursor: pointer;
   z-index: 1;
+  border-radius: 50%;
+  font-size: 24px;
 }
 
 .carrossel-button.prev {
@@ -176,7 +265,7 @@ h2 {
 /* Filmes em Alta - Fundo Turquesa */
 .FilmesEmAlta {
   background-color: #30d5c8;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 8px;
 }

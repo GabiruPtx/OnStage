@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+    <script src="js/navegacao.js" defer></script>
+    <title>OnStage - O espetáculo ao seu alcance</title>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="menu-button">&#9776;</div>
+        <div class="logo-container">
+            <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar eventos...">
+        </div>
+        <button class="auth-btn">Cadastrar/Login</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+            <span class="icon">☀️</span>
+        </button>
+    </header>
+
+    <!-- Corpo principal -->
+    <main>
+        <!-- Palco em Cena (sofreu alteração) -->
+        <section class="EventosEmAlta">
+            <h2>Palco em Cena</h2>
+            <div class="carrossel">
+                <div class="carrossel-track">
+                    <div class="image-container">
+                        <img src="img/vivaelvisexperience.png" alt="Evento 1">
+                        <div class="overlay">
+                            <h3>Viva Elvis Experience</h3>
+                            <p>Os fãs cariocas de Elvis já podem comemorar: dia 12 de fevereiro o Teatro Riachuelo recebe um dos maiores tributos ao Rei do Rock. “Viva Elvis Experience”, interpretado por Alex Ferrera, é um espetáculo musical que contempla 20 anos de carreira de Elvis Presley, desde sua ascensão à fama na década de 1950, até as suas fabulosas e inesquecíveis apresentações nos anos 70.</p> 
+                            <button onclick="comprarIngresso('vivaelvisexperience', 'img/vivaelvisexperience.png', 'Os fãs cariocas de Elvis já podem comemorar: dia 12 de fevereiro o Teatro Riachuelo recebe um dos maiores tributos ao Rei do Rock. “Viva Elvis Experience”, interpretado por Alex Ferrera, é um espetáculo musical que contempla 20 anos de carreira de Elvis Presley, desde sua ascensão à fama na década de 1950, até as suas fabulosas e inesquecíveis apresentações nos anos 70.')">
+                                Comprar Ingresso
+                              </button>
+                             
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="image-container">
+                        <img src="img/detalhes de nos dois.png" alt="Evento 2">
+                        <div class="overlay">
+                            <h3>Herege</h3>
+                            <p>Descrição do evento 2.</p>
+                            <button 
+                                data-titulo="Herege" 
+                                data-sinopse="Descrição do evento 2." 
+                                data-imagem="img/detalhes de nos dois.png" 
+                                onclick="redirecionar(this)">
+                                Comprar Ingresso
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Repetir o mesmo processo para os outros botões -->
+                    
+                    <div class="image-container">
+                        <img src="img/a-forja-o-poder-da-transformacao-posterportrait.webp" alt="Evento 3">
+                        <div class="overlay">
+                            <h3>A Forja</h3>
+                            <p>Descrição do evento 3.</p>
+                            <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrossel-button prev">&#10094;</button>
+                <button class="carrossel-button next">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Filmes em Alta -->
+<section class="FilmesEmAlta">
+    <h2>Filmes em Cartaz</h2>
+    <div class="carrossel">
+        <div class="carrossel-track">
+            <div class="slide">
+                <div class="image-container">
+                    <img src="img/todo-tempo-que-temos1.jpg" alt="Filme 1">
+                    <div class="overlay">
+                        <h3>Todo Tempo que Temos</h3>
+                        <p>Almut e Tobias são unidos por um encontro surpresa que muda suas vidas. Ao embarcarem em um caminho desafiado pelos limites do tempo, eles aprendem a valorizar cada momento de sua história de amor não convencional.</p>
+                        <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-container">
+                    <img src="img/venom3-corrigido.jpg" alt="Filme 2">
+                    <div class="overlay">
+                        <h3>Venom 3 - A Última Rodada</h3>
+                        <p>Eddie e Venom devem tomar uma decisão devastadora enquanto são perseguidos por um misterioso homem.</p>
+                        <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-container">
+                    <img src="img/wicked-posterportrait.webp" alt="Filme 3">
+                    <div class="overlay">
+                        <h3>Wicked</h3>
+                        <p>Na Terra de Oz, uma jovem chamada Elphaba forma uma improvável amizade com uma estudante popular chamada Glinda. Após um encontro com o Mágico de Oz, o relacionamento delas logo chega a uma encruzilhada.</p>
+                        <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-container">
+                    <img src="img/ainda.jpg" alt="Filme 1">
+                    <div class="overlay">
+                        <h3>Ainda Estou Aqui</h3>
+                        <p>No início da década de 1970, o Brasil enfrenta o endurecimento da ditadura militar. No Rio de Janeiro, a família Paiva - Rubens, Eunice e seus cinco filhos - vive à beira da praia em uma casa de portas abertas para os amigos. Um dia, Rubens Paiva é levado por militares à paisana e desaparece.</p>
+                        <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="image-container">
+                    <img src="img/ainda.jpg" alt="Filme 1">
+                    <div class="overlay">
+                        <h3>Ainda Estou Aqui</h3>
+                        <p>No início da década de 1970, o Brasil enfrenta o endurecimento da ditadura militar. No Rio de Janeiro, a família Paiva - Rubens, Eunice e seus cinco filhos - vive à beira da praia em uma casa de portas abertas para os amigos. Um dia, Rubens Paiva é levado por militares à paisana e desaparece.</p>
+                        <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carrossel-button prev">&#10094;</button>
+        <button class="carrossel-button next">&#10095;</button>
+    </div>
+</section>
+
+
+        <!-- Estreando -->
+        <section class="Estreando">
+            <h2>Em Estreia</h2>
+            <div class="carrossel">
+                <div class="carrossel-track">
+                    <div class="image-container">
+                        <img src="img/solo leveling.webp" alt="Estreia 1">
+                        <div class="overlay">
+                            <h3>Solo Leveling: Segundo Despertar</h3>
+                            <p>Há mais de uma década, surgiu uma misteriosa passagem chamada "portal" que conecta este mundo a uma dimensão diferente, o que fez com que pessoas despertassem poderes únicos e ganhassem o nome de "caçadores". Os caçadores usam seus poderes sobre-humanos para conquistar masmorras dentro dos portais e assim ganhar a vida.</p>
+                            <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="img/mufasaoreileao.jpg" alt="Estreia 2">
+                        <div class="overlay">
+                            <h3>Mufasa: O Rei Leão</h3>
+                            <p>Mufasa, um filhote órfão, perdido e sozinho, conhece um simpático leão chamado Taka, herdeiro de uma linhagem real. O encontro ao acaso dá início a uma grande jornada de um grupo extraordinário de deslocados em busca de seu destino, além de revelar a ascensão de um dos maiores reis das Terras do Orgulho.</p>
+                            <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="img/Kraven_the_Hunter_poster.jpg" alt="Estreia 3">
+                        <div class="overlay">
+                            <h3>Kraven, O Caçador</h3>
+                            <p>O imigrante russo Sergei Kravinoff tem a missão de provar que é o maior caçador do mundo.</p>
+                            <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="img/sonic3.webp" alt="Estreia 4">
+                        <div class="overlay">
+                            <h3>Sonic 3 - O Filme</h3>
+                            <p>Sonic está pronto para mais liberdade, mas o Dr. Robotnik (Jim Carrey) retorna para um embate final.</p>
+                            <a href="sessoescinemas.html"
+                                <button>Comprar Ingresso</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrossel-button prev">&#10094;</button>
+                <button class="carrossel-button next">&#10095;</button>
+            </div>
+        </section>
+        
+    </main>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2024 OnStage. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>

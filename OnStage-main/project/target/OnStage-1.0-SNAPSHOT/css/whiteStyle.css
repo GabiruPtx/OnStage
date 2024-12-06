@@ -1,0 +1,205 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Corpo e fundo */
+body {
+    background: #ffffff;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*Botão de menu*/
+.menu-button {
+    background-color: #3f51b5; /* Indigo, da sua paleta de cores */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 12px; /* Arredonda as pontas */
+    padding: 10px 15px; /* Ajusta o espaçamento interno */
+    cursor: pointer; /* Mostra o ícone de clique */
+    display: flex; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    width: 50px; /* Largura fixa */
+    height: 50px; /* Altura fixa */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: transform 0.2s, background-color 0.3s; /* Transições suaves */
+    font-size: 30px;
+}
+.menu-button:hover {
+    background-color: #30d5c8; /* Cor turquesa ao passar o mouse */
+    transform: scale(1.1); /* Aumenta ligeiramente no hover */
+}
+.menu-button:active {
+    transform: scale(1.05); /* Reduz o efeito no clique */
+}
+
+/*Logotipo*/
+.logo {
+    height: 60px; /* Define a altura da logotipo */
+    max-width: 100%; /* Mantém a proporção */
+    margin: 0 0; /* Espaçamento ao redor da imagem */
+    vertical-align:middle; /* Alinha ao centro verticalmente com outros elementos */
+    horiz-align: left;
+}
+
+/*Barra de pesquisa*/
+.search-bar input {
+    width: 300px;         /* Largura da barra */
+    height: 40px;         /* Altura da barra */
+    padding: 10px;        /* Espaçamento interno */
+    border-radius: 5px;   /* Ajuste da curvatura */
+    outline: none;        /* Remove o contorno ao focar */
+    font-size: 16px;
+    border: 1px solid #30d5c8; /* Turquesa */
+}
+
+/*Botão de cadastro/login*/
+.auth-btn {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+.auth-btn:hover {
+    background-color: #30d5c8;
+}
+
+/* Estilo geral do botão */
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3f51b5;
+    color: #ffa500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+/* Hover e clique no botão */
+.theme-toggle:hover {
+    background-color: #30d5c8;
+    transform: scale(1.1);
+}
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Ícone do botão */
+.theme-toggle .icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Tema escuro */
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Estilo do botão no tema escuro */
+body.dark-theme .theme-toggle {
+    background-color: #333333;
+    color: #f0e68c; /* cor da lua */
+}
+
+/* Sessão: EventosEmAlta (mais à frente) */
+.EventosEmAlta {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 100px; /* Espaçamento entre os elementos */
+    background-color: #e6e6fa;
+    height: 320px;
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); /* Sombra projetada */
+    z-index: 3; /* Mais à frente */
+    position: relative; /* Necessário para aplicar z-index */
+}
+
+.FilmesEmAlta {
+    flex: 1; /* Divide igualmente o espaço disponível */
+    max-width: 40%; /* Limita o tamanho máximo para evitar distorções */
+    height: 200px; /* Altura fixa */
+    background-color: #2e2e2e; /* Fundo das divs */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra das divs */
+}
+
+.PeçasEmAlta {
+    flex: 1; /* Divide igualmente o espaço disponível */
+    max-width: 40%; /* Limita o tamanho máximo para evitar distorções */
+    height: 200px; /* Altura fixa */
+    background-color: #2e2e2e; /* Fundo das divs */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra das divs */
+}
+
+/* Sessão: EventosProximos (mais atrás, sombra interna) */
+.EventosProximos {
+    background-color: #30d5c8;
+    height: 320px;
+    box-shadow:
+            inset 0 -5px 10px rgba(0, 0, 0, 0.2); /* Sombra na parte inferior */
+    z-index: 1; /* Mais atrás */
+    position: relative;
+}
+
+/* Sessão: Estreando (mais à frente, sombra projetada) */
+.Estreando {
+    background-color: #3f51b5;
+    height: 320px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); /* Sombra projetada */
+    z-index: 2;
+    position: relative;
+}
+
+/* Sessão: EmBreve (mais atrás, sombra interna) */
+.EmBreve {
+    background-color: #2e2e2e;
+    height: 320px;
+    box-shadow:
+            inset 0 -5px 10px rgba(0, 0, 0, 0.2); /* Sombra na parte inferior */
+    z-index: 1; /* Mais atrás */
+    position: relative;
+}
+
+/* Sessão: EventosPorCategoria (sem sombra) */
+.EventosPorCategoria {
+    background-color: #e6e6fa;
+    height: 1207px;
+    box-shadow: none; /* Sem sombra */
+    z-index: 0; /* Normal */
+    position: relative;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #2e2e2e; /* Preto suave */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}

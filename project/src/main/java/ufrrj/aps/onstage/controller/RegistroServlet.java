@@ -1,4 +1,5 @@
 package ufrrj.aps.onstage.controller;
 
-public class RegisterServlet {
+public class RegistroServlet {
+    
 }

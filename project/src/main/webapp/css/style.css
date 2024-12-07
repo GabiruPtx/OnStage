@@ -19,9 +19,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+ 
   padding: 1rem 2rem;
-  position: sticky;
   top: 0;
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -219,13 +218,16 @@ body.dark-theme .theme-toggle {
   display: flex;
   transition: transform 0.5s ease;
   gap: 100px; /* Adiciona espaçamento entre as imagens */
+
 }
 
 .carrossel-track img {
-  width: 400px; /* Define a largura das imagens */
-  height: 500px; /* Define a altura das imagens */
+  height: 500px; 
   flex: 0 0 auto;
   object-fit: cover;
+}
+.image-container{
+  width: 1000px;
 }
 
 .carrossel-button {

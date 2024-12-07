@@ -26,22 +26,6 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.menu-button {
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  transition: transform 0.2s, background-color 0.3s;
-  font-size: 30px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-}
 
 .menu-button:hover {
   background-color: #30d5c8;
@@ -217,17 +201,21 @@ body.dark-theme .theme-toggle {
 .carrossel-track {
   display: flex;
   transition: transform 0.5s ease;
-  gap: 100px; /* Adiciona espaçamento entre as imagens */
-
+  gap: 30px; /* Espaçamento entre os itens */
+  will-change: transform; /* Melhora a performance */
 }
 
 .carrossel-track img {
-  height: 500px; 
-  flex: 0 0 auto;
+  width: auto;
+  height: 500px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 10px;
 }
-.image-container{
-  width: 1000px;
+
+.image-container {
+  flex: 0 0 calc(100% / 3); /* Mostra 3 itens por vez, ajuste conforme necessário */
+  max-width: 300px; /* Limita o tamanho máximo */
 }
 
 .carrossel-button {
@@ -251,7 +239,6 @@ body.dark-theme .theme-toggle {
 .carrossel-button.next {
   right: 10px;
 }
-
 /* Estilos para cada seção */
 .EventosEmAlta, .FilmesEmAlta, .EventosProximos, .Estreando, .EmBreve {
   margin-bottom: 30px;

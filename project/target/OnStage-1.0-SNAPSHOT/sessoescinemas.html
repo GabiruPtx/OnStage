@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Filme - Wicked</title>
-    <link rel="stylesheet" href="/project/src/main/webapp/css/sessoescinemas.css">
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/sessoescinemas.css">
+    <script src="js/sessoescinemas.js" defer></script>
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -30,8 +30,7 @@
                 <h1>Wicked</h1>
                 <p class="genero">Ação, Aventura, Fantasia, Musical</p>
                 <p class="duracao">Duração: 2h41</p>
-                <p class="descricao">Baseado no musical homônimo da Broadway, Wicked é o prelúdio da famosa história de Dorothy e do Mágico de Oz. Conheça a história de Elphaba, uma jovem incompreendida e dotada de poderes extraordinários.</p>
-            </div>
+                         </div>
         </section>
 
         <!-- Abas de Navegação -->
@@ -46,10 +45,13 @@
             <section class="datas">
                 <h2>Selecione uma data</h2>
                 <div class="datas-lista">
-                    <button class="data ativa" data-date="2024-12-05">SEX - 06/12</button>
-                    <button class="data" data-date="2024-12-07">SÁB - 07/12</button>
-                    <button class="data" data-date="2024-12-08">DOM - 08/12</button>
-                    <button class="data" data-date="2024-12-09">SEG - 09/12</button>
+                    <button class="data" data-date="2024-12-08">DOM</button>
+                    <button class="data" data-date="2024-12-09">SEG</button>
+                    <button class="data" data-date="2024-12-10">TER</button>
+                    <button class="data" data-date="2024-12-11">QUA</button>
+                    <button class="data" data-date="2024-12-12">QUI</button>
+                    <button class="data" data-date="2024-12-13">SEX</button>
+                    <button class="data" data-date="2024-12-14">SAB</button>
                 </div>
             </section>
 
@@ -57,46 +59,50 @@
             <section class="cinemas">
                 <h3>Cinemas disponíveis:</h3>
                 <div class="cinema" id="cinema1">
-                    <h4>Cinema A</h4>
+                    <h4>Kinoplex Nova América</h4>
                     <p><strong>Horários:</strong> 15:00 | 18:30 | 21:00</p>
                 </div>
                 <div class="cinema" id="cinema2">
-                    <h4>Cinema B</h4>
+                    <h4>UCI Kinoplex Norte Shopping</h4>
                     <p><strong>Horários:</strong> 14:30 | 17:45 | 20:00</p>
                 </div>
                 <div class="cinema" id="cinema3">
-                    <h4>Cinema C</h4>
+                    <h4>Cinesercla Nilópolis Square</h4>
                     <p><strong>Horários:</strong> 16:00 | 19:15 | 22:00</p>
                 </div>
             </section>
         </div>
 
+        <!-- Aba "Sobre o Filme" -->
         <div class="conteudo-aba" id="sobre">
-            <h2>Sobre o filme</h2>
-            <p>Wicked é uma adaptação cinematográfica do famoso musical da Broadway, que explora a amizade improvável entre duas jovens bruxas: Elphaba, com pele verde e uma personalidade feroz, e Glinda, charmosa e popular. A história acontece antes da chegada de Dorothy à terra de Oz, revelando os eventos que moldaram o mundo mágico.</p>
+                        <!-- Conteúdo do "Sobre o Filme" (inicialmente escondido) -->
+            <div id="sinopse-conteudo" style="display: none;">
+                <h2>Sobre o filme</h2>
+                <p>Wicked é uma adaptação cinematográfica do famoso musical da Broadway, que explora a amizade improvável entre duas jovens bruxas: Elphaba, com pele verde e uma personalidade feroz, e Glinda, charmosa e popular. A história acontece antes da chegada de Dorothy à terra de Oz, revelando os eventos que moldaram o mundo mágico.</p>
 
-            <!-- Ficha Técnica -->
-            <section class="ficha-tecnica">
-                <h3>Ficha Técnica:</h3>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">Nome Original:</span> Wicked
-                </div>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">Direção:</span> John M. Chu
-                </div>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">Gênero:</span> Ação, Aventura, Fantasia, Musical
-                </div>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">Distribuidor:</span> Universal Pictures Brasil
-                </div>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">Duração:</span> 161 min
-                </div>
-                <div class="ficha-item">
-                    <span class="ficha-titulo">País de Origem:</span> <img src="img/usa-flag.png" alt="EUA" class="flag">
-                </div>
-            </section>
+                <!-- Ficha Técnica -->
+                <section class="ficha-tecnica">
+                    <h3>Ficha Técnica:</h3>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">Nome Original:</span> Wicked
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">Direção:</span> John M. Chu
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">Gênero:</span> Ação, Aventura, Fantasia, Musical
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">Distribuidor:</span> Universal Pictures Brasil
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">Duração:</span> 161 min
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-titulo">País de Origem:</span> <img src="img/usa-flag.png" alt="EUA" class="flag">
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
 
@@ -106,20 +112,17 @@
     </footer>
 
     <script>
-        // Alternar abas
-        const abas = document.querySelectorAll('.aba');
-        const conteudos = document.querySelectorAll('.conteudo-aba');
+        // Manipulação do botão já existente para exibir/ocultar informações
+        const botaoSobre = document.querySelector('.aba[data-aba="sobre"]');  // Seleciona o botão "Sobre o filme"
+        const sinopseConteudo = document.getElementById("sinopse-conteudo");
 
-        abas.forEach(aba => {
-            aba.addEventListener('click', () => {
-                // Remove a classe ativa de todas as abas e conteúdos
-                abas.forEach(btn => btn.classList.remove('ativa'));
-                conteudos.forEach(conteudo => conteudo.classList.remove('ativo'));
-                
-                // Adiciona a classe ativa à aba clicada e ao conteúdo correspondente
-                aba.classList.add('ativa');
-                document.getElementById(aba.getAttribute('data-content')).classList.add('ativo');
-            });
+        // Evento para alternar a visibilidade do conteúdo
+        botaoSobre.addEventListener("click", function() {
+            if (sinopseConteudo.style.display === "none" || sinopseConteudo.style.display === "") {
+                sinopseConteudo.style.display = "block";  // Exibe o conteúdo
+            } else {
+                sinopseConteudo.style.display = "none";  // Oculta o conteúdo
+            }
         });
     </script>
 </body>

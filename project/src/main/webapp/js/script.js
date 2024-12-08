@@ -59,37 +59,103 @@ document.querySelectorAll('.carrossel').forEach((carrossel) => {
   const images = Array.from(track.children);
   const prevButton = carrossel.querySelector('.carrossel-button.prev');
   const nextButton = carrossel.querySelector('.carrossel-button.next');
+  const totalImages = images.length;
+  const visibleImages = 4; // Quantidade de imagens visíveis no carrossel
+  const gap = 7; // Espaçamento entre as imagens
   let currentIndex = 0;
 
-  function updateCarousel() {
-    const carrosselWidth = carrossel.offsetWidth; // Largura do contêiner
-    track.style.transform = `translateX(-${currentIndex * (carrosselWidth / 2)}px)`; // Move o carrossel
+  // Define o layout inicial do carrossel
+  function setTrackWidth() {
+    const imageWidth = carrossel.offsetWidth / visibleImages - gap;
+    images.forEach((image) => {
+      image.style.width = `${imageWidth}px`;
+    });
+
+    const totalWidth = (imageWidth + gap) * totalImages - gap;
+    track.style.width = `${totalWidth}px`;
   }
 
+  // Move para o índice desejado
+  function moveToIndex(index) {
+    const imageWidth = carrossel.offsetWidth / visibleImages - gap;
+    track.style.transition = 'transform 0.5s ease-in-out';
+    track.style.transform = `translateX(-${index * (imageWidth + gap)}px)`;
+    currentIndex = index;
+  }
+
+  // Avança para a próxima imagem
   nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % Math.ceil(images.length / 2); // Volta ao início após o fim
-    updateCarousel();
+    if (currentIndex === totalImages - visibleImages) {
+      // Retorna ao início se estiver no final
+      moveToIndex(0);
+    } else {
+      moveToIndex(currentIndex + 1);
+    }
   });
 
+  // Retorna para a imagem anterior
   prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + Math.ceil(images.length / 2)) % Math.ceil(images.length / 2); // Vai ao final após o início
-    updateCarousel();
+    if (currentIndex === 0) {
+      // Vai para o final se estiver no início
+      moveToIndex(totalImages - visibleImages);
+    } else {
+      moveToIndex(currentIndex - 1);
+    }
   });
 
-  // Redimensionamento responsivo
-  window.addEventListener('resize', updateCarousel);
+  // Ajusta o carrossel ao redimensionar a tela
+  window.addEventListener('resize', () => {
+    setTrackWidth();
+    moveToIndex(currentIndex); // Reajusta a posição
+  });
 
-  // Inicializa o carrossel
-  updateCarousel();
+  // Configurações iniciais
+  setTrackWidth();
+  moveToIndex(0);
 });
 
-// Botão de Perfil
-const profileToggle = document.getElementById('profile-toggle');
-const profileDropdown = document.getElementById('profile-dropdown');
 
-profileToggle.addEventListener('click', function () {
-  profileDropdown.classList.toggle('hidden');
+  // Verifica se o usuário está logado
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  const authButton = document.getElementById('auth-btn'); // Botão de login/cadastro
+  const profileMenu = document.getElementById('profile-container'); // Menu de perfil
+
+  if (isLoggedIn === 'true') {
+      // Esconde o botão de login/cadastro
+      if (authButton) authButton.style.display = 'none';
+
+      // Mostra o menu de perfil
+      if (profileMenu) profileMenu.style.display = 'block';
+
+      // Opcional: Atualiza o nome no menu de perfil com o email do usuário
+      const userEmail = localStorage.getItem('userEmail');
+      const profileName = document.getElementById('profile-name');
+      if (profileName && userEmail) {
+          profileName.textContent = userEmail.split('@')[0]; // Exibe apenas o nome do email
+      }
+  } else {
+      // Mostra o botão de login/cadastro se não estiver logado
+      if (authButton) authButton.style.display = 'block';
+      if (profileMenu) profileMenu.style.display = 'none';
+  }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const logoutButton = document.getElementById('logout-btn');
+
+  if (logoutButton) {
+      logoutButton.addEventListener('click', function() {
+          // Limpa o estado de login
+          localStorage.removeItem('isLoggedIn');
+          localStorage.removeItem('userEmail');
+
+          // Atualiza a interface
+          window.location.href = "index.html"; // Redireciona para a página de índice
+      });
+  }
 });
+
+
 
 // Fecha o menu se clicar fora
 document.addEventListener('click', function (e) {

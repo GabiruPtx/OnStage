@@ -1,14 +1,5 @@
 package ufrrj.aps.onstage.controller;
 
-import com.google.gson.Gson;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import ufrrj.aps.onstage.util.DBConnection;
-import ufrrj.aps.onstage.util.LoginRequest;
-
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -18,9 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
 
-import static java.sql.DriverManager.getConnection;
+import com.google.gson.Gson;
 
-@WebServlet("/auth")
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import ufrrj.aps.onstage.util.DBConnection;
+import ufrrj.aps.onstage.util.LoginRequest;
+
+@WebServlet("/login")
 public class AuthenticationServlet extends HttpServlet {
 
     private final Gson gson = new Gson();

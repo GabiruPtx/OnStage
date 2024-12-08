@@ -51,6 +51,10 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
   } else {
     icon.innerText = "☀️"; // Sol para tema claro
   }
+
+  // Atualizar a logo com base no tema
+  const logo = document.querySelector('.logo');
+  logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
 });
 
 // Funções para o carrossel

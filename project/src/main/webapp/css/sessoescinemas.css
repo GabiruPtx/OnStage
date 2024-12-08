@@ -1,5 +1,6 @@
 body {
   font-family: 'Poppins', sans-serif; 
+  padding-bottom: 80px;
 }*
 
 {
@@ -23,8 +24,12 @@ body {
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #222;
@@ -88,6 +93,20 @@ body.dark-theme {
   color: #000000;
 }
 
+/* Adicionando margem inferior aos botões de horário de sessão */
+.times button {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px; /* Espaçamento entre os botões */
+  margin-bottom: 20px; /* Adiciona espaço abaixo dos botões de sessão */
+}
+
+
 /* Estilo do botão no tema escuro */
 body.dark-theme .theme-toggle {
   background-color: #333333;
@@ -144,6 +163,49 @@ body.black-theme .theme-button {
   position: relative;
   display: inline-block;
 }
+
+
+/* Estilo geral do botão de "Sobre o Filme" */
+.auth-btn {
+  background-color: #fff;
+  color: #000;
+  background-color: #30d5c8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  border-radius: 5px;
+}
+
+/* Hover */
+.auth-btn:hover {
+  background-color: #30d5c8;
+  transform: scale(1.05);
+}
+
+/* Clique */
+.auth-btn:active {
+  transform: scale(0.95);
+}
+
+button {
+  background-color: #fff;
+  color: #000;
+  background-color: #114b81;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  margin-left: 20px; /* Aumente esse valor para mover mais para a direita */
+  border-radius: 5px;
+}
+
 
 /* Botão de Cadastro/Login */
 .auth-btn {

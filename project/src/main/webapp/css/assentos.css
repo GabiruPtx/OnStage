@@ -27,6 +27,21 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Estilo padrão para o título */
+#seat-selection-title {
+    color: black;  /* Cor normal do texto */
+    text-align: center;  /* Centraliza horizontalmente dentro do seu contêiner */
+    font-size: 2rem;  /* Tamanho da fonte */
+    margin-top: 20px;  /* Adiciona um espaçamento acima para não ficar no topo */
+}
+
+/* Estilo quando o modo escuro estiver ativo */
+body.dark-theme #seat-selection-title {
+    color: white;  /* Cor do texto em modo escuro */
+}
+
+
+
 .logo-container img {
     max-height: 50px;
 }

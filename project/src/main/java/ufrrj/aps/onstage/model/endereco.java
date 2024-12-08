@@ -100,6 +100,4 @@ public class endereco {
         this.cep = cep;
     }
 
-
-
 }

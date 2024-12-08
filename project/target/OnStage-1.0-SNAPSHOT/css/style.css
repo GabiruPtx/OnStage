@@ -19,7 +19,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
- 
   padding: 1rem 2rem;
   top: 0;
   z-index: 10;
@@ -49,6 +48,7 @@ body {
   font-size: 16px;
 }
 
+/* Botão de Cadastro/Login */
 .auth-btn {
   background-color: #3f51b5;
   color: white;
@@ -196,6 +196,7 @@ body.dark-theme .theme-toggle {
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 10px 0;
 }
 
 .carrossel-track {
@@ -203,9 +204,11 @@ body.dark-theme .theme-toggle {
   transition: transform 0.5s ease;
   gap: 30px; /* Espaçamento entre os itens */
   will-change: transform; /* Melhora a performance */
+  padding-left: 10px;
 }
 
 .carrossel-track img {
+  gap: 50px; /* Espaçamento entre os itens */
   width: auto;
   height: 500px;
   aspect-ratio: 1 / 1;
@@ -249,6 +252,7 @@ h2 {
   font-size: 24px;
   margin-bottom: 15px;
   color: black;
+  padding-left: 10px;
 }
 
 /* Filmes em Alta - Fundo Turquesa */
@@ -315,4 +319,84 @@ body.black-theme .theme-button {
   background-color: #2e2e2e;
   color: #ffffff;
   border: 1px solid #333;
+}
+
+#auth-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Geral */
+#auth-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botão de Perfil */
+.profile-container {
+  position: relative;
+  margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
+}
+.profile-btn {
+  display: flex;
+  align-items: center;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-left: 600px;
+}
+
+.profile-btn:hover {
+  background-color: #30d5c8;
+}
+
+.profile-name {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Menu Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  display: none;
+  z-index: 10;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.profile-dropdown li {
+  padding: 10px 20px;
+}
+
+.profile-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  display: block;
+}
+
+.profile-dropdown li a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.profile-container:hover .profile-dropdown {
+  display: block;
 }

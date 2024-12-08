@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import ufrrj.aps.onstage.dao.clienteDAO;
 import ufrrj.aps.onstage.model.cliente;
 
@@ -52,7 +53,10 @@ public class CadastroServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(0);
+        session.setAttribute("cliente", cliente);
         response.sendRedirect(request.getContextPath() + "/index.html");
     
     }

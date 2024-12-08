@@ -44,6 +44,80 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         alert("Seu ingresso será enviado por e-mail ou poderá ser retirado na bilheteria.");
         localStorage.removeItem("selectedSeats");
-        window.location.href = "inicial.html";
+        window.location.href = "index.html";
     });
 });
+const ticketTypeRadios = document.querySelectorAll('input[name="ticketType"]');
+const cpfContainer = document.getElementById('cpf-container');
+const cpfInput = document.getElementById('cpf');
+
+// Atualiza a visibilidade do campo CPF com base no tipo de ingresso selecionado
+ticketTypeRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (radio.value === 'meia' && radio.checked) {
+            cpfContainer.style.display = 'block';
+        } else {
+            cpfContainer.style.display = 'none';
+            cpfInput.value = ''; // Limpa o CPF se o usuário mudar para "inteira"
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("Script carregado com sucesso!");// Verifica se o usuário está logado
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+  
+    const authButton = document.getElementById('auth-btn'); // Botão de login/cadastro
+    const profileMenu = document.getElementById('profile-container'); // Menu de perfil
+    const profileName = document.getElementById('profile-name'); // Nome no perfil
+    const profileDropdown = document.getElementById('profile-dropdown'); // Dropdown de perfil
+  
+    if (isLoggedIn === 'true') {
+      // Esconde o botão de login/cadastro
+      if (authButton) authButton.style.display = 'none';
+  
+      // Mostra o menu de perfil
+      if (profileMenu) profileMenu.style.display = 'flex';
+  
+      // Opcional: Atualiza o nome no menu de perfil com o email do usuário
+      const userEmail = localStorage.getItem('userEmail');
+      if (profileName && userEmail) {
+        profileName.textContent = userEmail.split('@')[0]; // Exibe apenas o nome do email
+      }
+    } else {
+      // Mostra o botão de login/cadastro se não estiver logado
+      if (authButton) authButton.style.display = 'block';
+      if (profileMenu) profileMenu.style.display = 'none';
+    }
+  
+    // Adiciona funcionalidade de logout
+    const logoutButton = document.getElementById('logout-btn');
+    if (logoutButton) {
+      logoutButton.addEventListener('click', function () {
+        // Limpa o estado de login
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+  
+        // Atualiza a interface e redireciona
+        window.location.href = "index.html"; // Redireciona para a página de índice
+      });
+    }
+  
+    // Controle do menu dropdown ao passar o mouse
+    profileMenu.addEventListener('mouseenter', function () {
+      profileDropdown.classList.remove('hidden');
+    });
+  
+    profileMenu.addEventListener('mouseleave', function () {
+      profileDropdown.classList.add('hidden');
+    });
+  
+    // Fecha o menu dropdown se clicar fora dele
+    document.addEventListener('click', function (e) {
+      if (
+        !profileMenu.contains(e.target) &&
+        !profileDropdown.contains(e.target)
+      ) {
+        profileDropdown.classList.add('hidden');
+      }
+    });
+})  

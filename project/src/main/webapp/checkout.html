@@ -8,19 +8,39 @@
     <title>OnStage - Checkout</title>
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-        <div class="logo-container">
-            <a href="inicial.html">
-            <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
-           
-
+      <!-- Cabeçalho -->
+   <!-- Cabeçalho -->
+   <header class="header">
+    <div class="logo-container">
+        <a href="index.html">
+        <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
+    </div></a>
+    <div id="auth-container">
+        <!-- Botão de Cadastro/Login -->
+        <button id="auth-btn" class="auth-btn">Cadastro / Login</button>
+      
+        <!-- Botão de Perfil e Menu -->
+        <div id="profile-container" class="profile-container" style="display: none;">
+          <button class="profile-btn">
+            GG
+            <span class="profile-name">Gabriel Garcia</span>
+          </button>
+          <div class="profile-dropdown">
+            <ul>
+              <li><a href="perfil.html">Minha conta</a></li>
+              <li><a href="#">Central de ajuda</a></li>
+              <li><a href="#" id="logout-btn">Sair</a></li>
+            </ul>
+          </div>
         </div>
-        </a>
-        <button class="theme-toggle" id="theme-toggle">
-            <span class="icon">🌙</span>
-        </button>
-    </header>
+      </div>
+      
+      
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+        <span class="icon">☀️</span>
+    </button>
+</header>
+
 
     <!-- Tela de Checkout -->
     <main>
@@ -30,6 +50,24 @@
         <section class="selected-seats">
             <h2>Assentos Selecionados</h2>
             <ul id="seat-list"></ul>
+        </section>
+
+        <!-- Tipo de Ingresso -->
+        <section class="ticket-type">
+            <h2>Tipo de Ingresso</h2>
+            <form id="ticket-form">
+                <label>
+                    <input type="radio" name="ticketType" value="inteira" checked>
+                    Inteira
+                </label>
+                <label>
+                    <input type="radio" name="ticketType" value="meia">
+                    Meia
+                </label>
+                <div id="cpf-container" style="display: none;">
+                    <input type="text" placeholder="CPF (somente números)" id="cpf" maxlength="11">
+                </div>
+            </form>
         </section>
 
         <!-- Opções de Pagamento -->
@@ -55,8 +93,9 @@
                     </label>
                     <p class="pix-instructions" id="pix-code"></p>
                 </div>
-
+               
                 <button type="submit" class="submit-button">Finalizar Compra</button>
+            
             </form>
         </section>
     </main>
@@ -65,5 +104,6 @@
     <footer class="footer">
         <p>&copy; 2024 OnStage. Todos os direitos reservados.</p>
     </footer>
+
 </body>
 </html>

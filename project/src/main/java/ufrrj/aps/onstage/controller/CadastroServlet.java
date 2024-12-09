@@ -14,12 +14,15 @@ import ufrrj.aps.onstage.model.cliente;
 @WebServlet("/CadastroServlet")
 public class CadastroServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
     public CadastroServlet() {
 
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect("cadastro.html");
 
     }
 

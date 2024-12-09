@@ -27,6 +27,21 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Estilo padrão para o título */
+#seat-selection-title {
+    color: black;  /* Cor normal do texto */
+    text-align: center;  /* Centraliza horizontalmente dentro do seu contêiner */
+    font-size: 2rem;  /* Tamanho da fonte */
+    margin-top: 20px;  /* Adiciona um espaçamento acima para não ficar no topo */
+}
+
+/* Estilo quando o modo escuro estiver ativo */
+body.dark-theme #seat-selection-title {
+    color: white;  /* Cor do texto em modo escuro */
+}
+
+
+
 .logo-container img {
     max-height: 50px;
 }
@@ -108,6 +123,56 @@ body {
 
 .seat.selected {
     background-color: #ffc107; /* Amarelo */
+}
+
+/* Novos estilos para tipos de assentos */
+.seat.premium {
+    border: 2px solid #FFD700; /* Contorno dourado para assentos premium */
+    box-shadow: 0 0 5px #FFD700;
+}
+
+.seat.disabled-seat {
+    background-color: #007bff; /* Azul para assentos acessíveis */
+}
+
+.seat.disabled-seat.reserved {
+    background-color: #004085; /* Azul mais escuro quando reservado */
+}
+
+.seat.premium.reserved {
+    background-color: #dc3545;
+    border: 2px solid #FFD700;
+}
+
+.seat.premium.selected {
+    background-color: #ffc107;
+    border: 2px solid #FFD700;
+}
+
+/* Ajustes no painel de informações */
+.info-panel {
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.info-panel div {
+    margin: 5px 15px;
+}
+
+/* Ajuste para o hover em assentos disponíveis */
+.seat.available:hover {
+    transform: scale(1.1);
+    background-color: #28a745;
+}
+
+.seat.premium.available:hover {
+    background-color: #28a745;
+    border: 2px solid #FFD700;
+}
+
+.seat.disabled-seat.available:hover {
+    background-color: #0056b3;
 }
 
 /* Painel de informações */
@@ -203,3 +268,78 @@ body.dark-theme .seat.reserved {
 body.dark-theme .seat.selected {
     background-color: #d39e00;
 }
+
+/* Garante que o footer fique no final mesmo com pouco conteúdo */
+html, body {
+    height: 100%; /* Ocupa 100% da altura da janela */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Layout em coluna */
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  footer {
+    background-color: #121212;
+    padding: 40px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border: none;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .column {
+    flex: 1;
+    min-width: 200px;
+  }
+  .column h4 {
+    margin-bottom: 10px;
+  }
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .column ul li {
+    margin-bottom: 5px;
+  }
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .payment-methods img, .awards img {
+    width: 50px; /* Largura fixa */
+    height: 30px; /* Altura fixa */
+    object-fit: contain; /* Ajusta o conteúdo sem distorção */
+  }
+  .awards {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .awards img {
+    max-height: 50px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+    max-width: 800px;
+    margin: 20px auto; /* Centraliza horizontalmente */
+    line-height: 1.5;
+  }

@@ -1,5 +1,5 @@
 package ufrrj.aps.onstage.dao;
 
-public class generoDAO {
+public class checkoutDAO {
     
 }

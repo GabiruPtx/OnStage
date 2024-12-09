@@ -13,6 +13,7 @@ public class evento {
     private String estado;
     private String imagem_url;
     private List<genero> generos;
+    private fichaTecnica ficha;
 
     public evento() {
 
@@ -88,6 +89,14 @@ public class evento {
 
     public void setGeneros(List<genero> generos) {
         this.generos = generos;
+    }
+
+    public fichaTecnica getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(fichaTecnica ficha) {
+        this.ficha = ficha;
     }
 
 }

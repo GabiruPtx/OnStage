@@ -99,9 +99,66 @@
         </form>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="footer">
-        <p>© 2024 OnStage. Todos os direitos reservados.</p>
-    </footer>
+   <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="column">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">Filmes</a></li>
+          <li><a href="#">Musicais</a></li>
+          <li><a href="#">Peças teatrais</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Quem Somos</a></li>
+          <li><a href="#">Assessoria de Imprensa</a></li>
+          <li><a href="#">Vale-Presente Corporativo</a></li>
+          <li><a href="#">Faça parte do time</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#">Privacidade e Segurança</a></li>
+          <li><a href="#">Trocas e Cancelamentos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Redes Sociais</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="column payment-methods">
+        <h4>Formas de Pagamento</h4>
+        <div>
+          <img src="img/visa.jpg" alt="Visa">
+          <img src="img/mastercard.jpg" alt="Mastercard">
+          <img src="img/nubank.jpg" alt="Nubank">
+          <!-- Adicione mais ícones conforme necessário -->
+        </div>
+      </div>
+      <div class="column awards">
+        <h4>Selo do Consumidor</h4>
+        <img src="img/reclame aqui.png" alt="Reclame Aqui">
+        <img src="img/premio.png" alt="Prêmio Melhor App">
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+        OnStage Ltda / CNPJ: 00.000.000/0001-00 Endereço: Rua Dois de Fevereiro, 85 - 5º andar - Engenho de Dentro - RJ - 20000-000<br>
+        Atendimento ao cliente © 2024 - Copyright OnStage.com - Todos os direitos reservados.
+    </div>
+  </footer>
 </body>
 </html>

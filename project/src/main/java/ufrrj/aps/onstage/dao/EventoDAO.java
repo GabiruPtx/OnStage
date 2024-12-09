@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ufrrj.aps.onstage.model.evento;
+import ufrrj.aps.onstage.model.fichaTecnica;
 import ufrrj.aps.onstage.model.genero;
 import ufrrj.aps.onstage.util.DBConnection;
 
@@ -35,6 +36,7 @@ public class eventoDAO {
                     
                     // Buscando os gêneros associados ao evento
                     e.setGeneros(buscarGenerosPorEvento(id));
+                    e.setFicha(buscarFichaTecnicaPorEvento(id));
                     
                     return e;
                 }
@@ -68,4 +70,30 @@ public class eventoDAO {
         }
         return generos; // Retorna a lista de gêneros
     }
+
+    //Método para buscar a ficha técnica de um evento
+    public fichaTecnica buscarFichaTecnicaPorEvento(int eventoId) throws SQLException {
+    String sql = "SELECT * FROM ficha_tecnica WHERE id_evento = ?";
+    
+    try (Connection connection = DBConnection.getConection();
+         PreparedStatement stmt = connection.prepareStatement(sql)) {
+        
+        stmt.setInt(1, eventoId);
+        
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                fichaTecnica ft = new fichaTecnica();
+                ft.setId(rs.getInt("id_ficha"));
+                ft.setId_evento(rs.getInt("id_evento"));
+                ft.setDirecao(rs.getString("direcao"));
+                ft.setDistribuidora(rs.getString("distribuidora"));
+                
+                return ft;
+            }
+        }
+    }
+    
+        return null; // Retorna null se não encontrar a ficha técnica
+    }
+
 }

@@ -281,13 +281,6 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.footer {
-  background-color: #2e2e2e;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
 /* Temas */
 body.white-theme {
   background-color: #f5f5f5;
@@ -401,6 +394,14 @@ body.black-theme .theme-button {
   display: block;
 }
 
+/* Garante que o footer fique no final mesmo com pouco conteúdo */
+html, body {
+  height: 100%; /* Ocupa 100% da altura da janela */
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Layout em coluna */
+}
+
 
 body {
   font-family: Arial, sans-serif;
@@ -412,7 +413,7 @@ body {
 footer {
   background-color: #121212;
   padding: 40px 20px;
-  position: fixed; /* Fixar no final */
+  position: relative;
   bottom: 0;
   width: 100%;
   border: none;

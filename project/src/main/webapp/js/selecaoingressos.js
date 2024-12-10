@@ -1,21 +1,45 @@
-// Alterna entre os temas (escuro e claro)
-document.getElementById('theme-toggle').addEventListener('click', function () {
-    // Verificar se o body existe
-    if (!document.body) return;
+const plusButtons = document.querySelectorAll('.quantity-btn');
+const totalElement = document.querySelector('.total p:last-child'); // Total no resumo
 
-    // Alterna as classes de tema
-    const isDarkTheme = document.body.classList.toggle('dark-theme');
-    document.body.classList.toggle('light-theme', !isDarkTheme);
+const ticketPrices = {
+    "Inteira": 31.88,
+    "Meia Estudante": 17.88,
+    "Meia Criança": 17.88,
+    "Meia - Pessoa Idosa": 17.88,
+    "Meia Entrada - Pessoa com Deficiência": 17.88
+};
 
-    // Alterar o ícone do botão conforme o tema
-    const icon = document.querySelector(".theme-toggle .icon");
-    if (icon) {
-        icon.innerText = isDarkTheme ? "🌙" : "☀️"; // Lua para escuro, Sol para claro
-    }
+// Função para atualizar o total
+function updateTotal() {
+    let total = 0;
 
-    // Atualizar a logo com base no tema
-    const logo = document.querySelector('.logo');
-    if (logo) {
-        logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
-    }
+    // Para cada tipo de ingresso
+    document.querySelectorAll('.ticket').forEach((ticket, index) => {
+        const quantity = parseInt(ticket.querySelector('.quantity-input').value);
+        const price = Object.values(ticketPrices)[index]; // Preço do ingresso
+        total += quantity * price; // Calcula o total para o tipo de ingresso
+    });
+
+    // Atualiza o total no HTML
+    totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+// Adiciona os ouvintes de evento para os botões de quantidade
+plusButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const input = e.target.parentElement.querySelector('.quantity-input');
+        let currentValue = parseInt(input.value);
+
+        if (e.target.innerText === "+") {
+            input.value = currentValue + 1;
+        } else if (e.target.innerText === "-" && currentValue > 0) {
+            input.value = currentValue - 1;
+        }
+
+        updateTotal(); // Atualiza o total após mudança na quantidade
+    });
 });
+
+// Inicializa o total ao carregar a página
+updateTotal();
+

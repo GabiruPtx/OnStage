@@ -73,10 +73,9 @@ body {
 /* Botão de Perfil */
 .profile-container {
     position: relative;
-    margin-left: auto; /* Garante que o botão de perfil fique na extremidade direita */
-}
-
-.profile-btn {
+    margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
+  }
+  .profile-btn {
     display: flex;
     align-items: center;
     background-color: #3f51b5;
@@ -87,20 +86,16 @@ body {
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
-}
-
-.profile-btn:hover {
+    margin-left: 600px;
+  }
+  
+  .profile-btn:hover {
     background-color: #30d5c8;
-}
-
-/* Restante do código */
-
   }
   
   .profile-name {
     margin-left: 10px;
     font-size: 14px;
-   
   }
   
   /* Menu Dropdown */
@@ -115,7 +110,6 @@ body {
     width: 200px;
     display: none;
     z-index: 10;
-   
   }
   
   .profile-dropdown ul {
@@ -144,6 +138,7 @@ body {
   .profile-container:hover .profile-dropdown {
     display: block;
   }
+
 /* Botão de alternância de tema */
 #theme-toggle {
     font-size: 1.5rem;
@@ -161,7 +156,7 @@ body {
 .main-content {
     display: flex;
     justify-content: center; /* Centraliza o conteúdo principal */
-    gap: 20px; /* Espaçamento entre colunas */
+    gap: 300px; /* Espaçamento entre colunas */
     margin-top: 120px; /* Espaço para o cabeçalho fixo */
 }
 
@@ -187,13 +182,15 @@ body {
     display: flex;
     flex-direction: column;
     text-align: left;
+    width: -300px;
 }
 
 .ticket-label p {
     margin: 0;
     font-size: 16px;
-    margin-right: 100px;
-    width: 200px;
+    margin-right: 300px;
+    width: 300px;
+    height: -10px;
     font-weight: bold;
     color: white;
 }
@@ -208,7 +205,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: auto;
+    margin-left: -300px;
 }
 
 .quantity-input {
@@ -243,7 +240,7 @@ body {
     max-height: 360px;
     margin-right: 200px;
     background-color: #333;
-    padding: 20px;
+    padding: 13px;
     border-radius: 8px;
     text-align: left;
 }
@@ -289,14 +286,14 @@ body {
 
 .back-button {
     margin-top: 10px; /* Espaçamento acima */
-    margin-left: 80px; /* Ajusta alinhamento para seguir os itens */
+    margin-left: 0px; /* Ajusta alinhamento para seguir os itens */
     text-align: center; /* Garante centralização */
     width: fit-content; /* Ajusta o tamanho ao conteúdo */
 }
 
 footer {
     background-color: #121212;
-    padding: 40px 20px;
+    padding: 10px 20px;
     position: relative;
     bottom: 0;
     width: 100%;

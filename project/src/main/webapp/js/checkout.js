@@ -148,3 +148,22 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 })  
+
+// Adiciona um ouvinte de evento para o botão de finalizar compra
+document.getElementById("finalize-btn").addEventListener("click", function(event) {
+  // Impede o envio do formulário (se estiver dentro de um formulário)
+  event.preventDefault();
+  
+  // Exibe um prompt para o usuário confirmar a finalização da compra
+  var userConfirmation = confirm("Tem certeza de que deseja finalizar a compra?");
+  
+  if (userConfirmation) {
+      // Se o usuário clicar em "OK", você pode redirecioná-lo para a página de pagamento ou processar a compra
+      alert("Compra finalizada com sucesso!");
+      // Redirecionamento para outra página, por exemplo:
+      // window.location.href = "pagina-de-pagamento.html";
+  } else {
+      // Se o usuário clicar em "Cancelar"
+      alert("Compra não finalizada.");
+  }
+});

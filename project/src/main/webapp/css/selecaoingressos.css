@@ -1,82 +1,19 @@
-/* Cabeçalho */
-.header {
+html, body {
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .menu-button:hover {
-    background-color: #30d5c8;
-    transform: scale(1.1);
-  }
-  
-  .logo {
-    height: 60px;
-    max-width: 100%;
-    margin: 0 0;
-    vertical-align: middle;
-  }
-  
-  .search-bar input {
-    width: 300px;
-    height: 40px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #30d5c8;
-    outline: none;
-    font-size: 16px;
-  }
-  
-  /* Botão de Cadastro/Login */
-  .auth-btn {
-    background-color: #3f51b5;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'Arial';
-  }
-  
-  .auth-btn:hover {
-    background-color: #30d5c8;
-  }
-  
-  /* Estilo geral do botão */
-  .theme-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background-color: #3f51b5;
-    color: #ffa500;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
-  }
-  
-  /* Hover e clique no botão */
-  .theme-toggle:hover {
-    background-color: #30d5c8;
-    transform: scale(1.1);
-  }
-  .theme-toggle:active {
-    transform: scale(0.95);
-  }
+    flex-direction: column;
+}
 
+/* Estilos Gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -84,26 +21,153 @@ body {
     margin: auto;
 }
 
+/* Cabeçalho */
 .header {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.header .title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Layout principal com os ingressos e o resumo */
-.main-content {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    align-items: flex-start;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fixação do cabeçalho */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: #333;
+}
+
+/* Logo */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    max-width: 200px;
+}
+
+/* Contêiner de autenticação e perfil */
+#auth-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 0; /* Certifique-se de que o botão de autenticação esteja alinhado à esquerda */
+}
+
+/* Botão de Cadastro */
+#auth-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-right: 20px; /* Ajusta o espaçamento à direita se necessário */
+}
+
+#auth-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de Perfil */
+.profile-container {
+    position: relative;
+    margin-left: auto; /* Garante que o botão de perfil fique na extremidade direita */
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-btn:hover {
+    background-color: #30d5c8;
+}
+
+/* Restante do código */
+
+  }
+  
+  .profile-name {
+    margin-left: 10px;
+    font-size: 14px;
+   
+  }
+  
+  /* Menu Dropdown */
+  .profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: none;
+    z-index: 10;
+   
+  }
+  
+  .profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .profile-dropdown li {
+    padding: 10px 20px;
+  }
+  
+  .profile-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+  }
+  
+  .profile-dropdown li a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  /* Mostrar dropdown ao passar o mouse */
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+/* Botão de alternância de tema */
+#theme-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+#theme-toggle:hover {
+    color: #007bff;
+}
+
+/* Layout Principal */
+.main-content {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo principal */
+    gap: 20px; /* Espaçamento entre colunas */
+    margin-top: 120px; /* Espaço para o cabeçalho fixo */
 }
 
 .ticket-options {
-    width: 50%;
+    flex: 1; /* Faz com que a seção de tickets ocupe o mesmo espaço */
+    max-width: 500px; /* Define um limite para a largura */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -116,7 +180,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: left; /* Garante alinhamento dos textos */
+    text-align: left;
 }
 
 .ticket-label {
@@ -128,6 +192,8 @@ body {
 .ticket-label p {
     margin: 0;
     font-size: 16px;
+    margin-right: 100px;
+    width: 200px;
     font-weight: bold;
     color: white;
 }
@@ -142,7 +208,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: auto; /* Alinha os controles de quantidade à direita */
+    margin-left: auto;
 }
 
 .quantity-input {
@@ -156,7 +222,7 @@ body {
 }
 
 .quantity-btn {
-    background-color: #ffb600;
+    background-color: #30d5c8;
     border: none;
     padding: 5px 10px;
     font-size: 16px;
@@ -167,18 +233,19 @@ body {
 }
 
 .quantity-btn:hover {
-    background-color: #e09500;
+    background-color: #30d5c8;
 }
-
 
 /* Resumo do pedido */
 .order-summary {
-    width: 40%;
+    flex: 1; /* Faz com que o resumo também ocupe o mesmo espaço */
+    width: 400px; /* Define um limite para a largura */
+    max-height: 360px;
+    margin-right: 200px;
     background-color: #333;
     padding: 20px;
     border-radius: 8px;
-    position: sticky;
-    top: 20px;
+    text-align: left;
 }
 
 .movie-info {
@@ -207,7 +274,7 @@ body {
 }
 
 .payment button, .back-button button {
-    background-color: #ffb600;
+    background-color: #30d5c8;
     border: none;
     padding: 10px 20px;
     color: #1e1e1e;
@@ -221,6 +288,67 @@ body {
 }
 
 .back-button {
-    text-align: center;
+    margin-top: 10px; /* Espaçamento acima */
+    margin-left: 80px; /* Ajusta alinhamento para seguir os itens */
+    text-align: center; /* Garante centralização */
+    width: fit-content; /* Ajusta o tamanho ao conteúdo */
 }
 
+footer {
+    background-color: #121212;
+    padding: 40px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border: none;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .column {
+    flex: 1;
+    min-width: 200px;
+  }
+  .column h4 {
+    margin-bottom: 10px;
+  }
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .column ul li {
+    margin-bottom: 5px;
+  }
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .payment-methods img, .awards img {
+    width: 50px; /* Largura fixa */
+    height: 30px; /* Altura fixa */
+    object-fit: contain; /* Ajusta o conteúdo sem distorção */
+  }
+  .awards {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .awards img {
+    max-height: 50px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+    max-width: 800px;
+    margin: 20px auto; /* Centraliza horizontalmente */
+    line-height: 1.5;
+  }

@@ -1,8 +1,77 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .menu-button:hover {
+    background-color: #30d5c8;
+    transform: scale(1.1);
+  }
+  
+  .logo {
+    height: 60px;
+    max-width: 100%;
+    margin: 0 0;
+    vertical-align: middle;
+  }
+  
+  .search-bar input {
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #30d5c8;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  /* Botão de Cadastro/Login */
+  .auth-btn {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial';
+  }
+  
+  .auth-btn:hover {
+    background-color: #30d5c8;
+  }
+  
+  /* Estilo geral do botão */
+  .theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3f51b5;
+    color: #ffa500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+  }
+  
+  /* Hover e clique no botão */
+  .theme-toggle:hover {
+    background-color: #30d5c8;
+    transform: scale(1.1);
+  }
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
 
 body {
     font-family: Arial, sans-serif;
@@ -42,28 +111,48 @@ body {
 
 .ticket {
     background-color: #333;
-    text-align: center;
     border-radius: 5px;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: left; /* Garante alinhamento dos textos */
+}
+
+.ticket-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 .ticket-label p {
-    margin-bottom: 5px;
+    margin: 0;
     font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
 
 .ticket-label span {
     font-size: 14px;
     color: #bbb;
+    margin-top: 5px;
 }
 
 .ticket-quantity {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: auto; /* Alinha os controles de quantidade à direita */
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #444;
+    border: none;
+    color: white;
+    border-radius: 4px;
 }
 
 .quantity-btn {
@@ -74,16 +163,13 @@ body {
     cursor: pointer;
     color: #1e1e1e;
     border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.quantity-input {
-    width: 30px;
-    text-align: center;
-    font-size: 16px;
-    background-color: #333;
-    border: none;
-    color: white;
+.quantity-btn:hover {
+    background-color: #e09500;
 }
+
 
 /* Resumo do pedido */
 .order-summary {
@@ -137,3 +223,4 @@ body {
 .back-button {
     text-align: center;
 }
+

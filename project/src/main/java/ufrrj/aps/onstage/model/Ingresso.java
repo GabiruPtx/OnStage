@@ -3,12 +3,16 @@ package aps.onstage.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Ingresso")
+@Table(name = "ingresso")
 public class Ingresso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "checkout_id", referencedColumnName = "id")
+    private Checkout checkout; // Relacionamento com o Checkout
+
     private String status;
     private String tipo;
     private int quantidade;
@@ -17,17 +21,39 @@ public class Ingresso {
     @Column(name = "data_compra")
     private String dataCompra;
 
-    public Ingresso(String tipo, Double preco) {
+    // Construtores
+    public Ingresso() {}
+
+    public Ingresso(String tipo, double preco, int quantidade, String status) {
         this.tipo = tipo;
         this.preco = preco;
+        this.quantidade = quantidade;
+        this.status = status;
     }
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Checkout getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(Checkout checkout) {
+        this.checkout = checkout;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getTipo() {
@@ -38,14 +64,6 @@ public class Ingresso {
         this.tipo = tipo;
     }
 
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
     public int getQuantidade() {
         return quantidade;
     }
@@ -54,8 +72,19 @@ public class Ingresso {
         this.quantidade = quantidade;
     }
 
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
     public String getDataCompra() {
         return dataCompra;
     }
 
+    public void setDataCompra(String dataCompra) {
+        this.dataCompra = dataCompra;
+    }
 }

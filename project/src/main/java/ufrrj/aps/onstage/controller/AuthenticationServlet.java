@@ -28,21 +28,16 @@ public class AuthenticationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        // Lê o corpo da requisição
         String requestBody = request.getReader().lines().collect(Collectors.joining());
         LoginRequest loginRequest = gson.fromJson(requestBody, LoginRequest.class);
 
-        // Verifica as credenciais (exemplo simples)
         if (isValidUser(loginRequest)) {
-            // Cria uma sessão
             HttpSession session = request.getSession(true);
             session.setAttribute("user", loginRequest.getEmail());
 
-            // Envia resposta de sucesso simples
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("Login successful");
         } else {
-            // Envia resposta de erro simples
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Invalid credentials");
         }

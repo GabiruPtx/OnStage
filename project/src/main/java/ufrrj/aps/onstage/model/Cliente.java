@@ -1,4 +1,4 @@
-public class Usuario {
+public class Cliente {
     private String nome;
     private int id;
     private LocalDate dataNascimento;
@@ -7,9 +7,9 @@ public class Usuario {
     private String cpf;
     private String senha;
 
-    public Usuario() {}
+    public Cliente() {}
 
-    public Usuario(String nome, LocalDate dataNascimento, String email,
+    public Cliente(String nome, LocalDate dataNascimento, String email,
                    String telefone, String cpf, String senha) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -26,6 +26,7 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
+
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
@@ -75,19 +76,4 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-
-    private UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-    public void salvar() {
-        usuarioDAO.salvarUsuario(this);
-    }
-
-    public void atualizar() {
-        usuarioDAO.alterarUsuario(this);
-    }
-
-    public void excluir() {
-        usuarioDAO.excluirUsuario(this.id);
-    }
 }
-

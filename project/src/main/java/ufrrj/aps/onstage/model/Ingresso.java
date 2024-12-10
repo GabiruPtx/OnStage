@@ -58,17 +58,4 @@ public class Ingresso {
         return dataCompra;
     }
 
-    public void emitirIngresso() {
-        // Lógica para emitir o ingresso
-    }
-
-    public void atualizarStatusIngresso() {
-        // Lógica para atualizar o status do ingresso
-    }
-
-    public static Ingresso buscarPorCodigo(String codigo) {
-        // Lógica para buscar um ingresso por código no banco de dados
-        return ingresso;
-    }
-
 }

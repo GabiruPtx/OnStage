@@ -110,3 +110,213 @@ body.dark-theme .payment-options {
     background-color: #333;
     color: #f1f1f1;
 }
+/* Centralização da seção "Tipo de Ingresso" */
+.ticket-type {
+    background-color: #f9f9f9; /* Fundo claro */
+    border: 1px solid #ddd; /* Borda sutil */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 20px; /* Espaçamento interno */
+    margin: 20px auto; /* Centralização horizontal */
+    width: 80%; /* Largura adaptável */
+   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para mudanças no tema */
+    display: flex; /* Garantir que o conteúdo ocupe o espaço corretamente */
+    flex-direction: column; /* Colocar conteúdo de forma vertical */
+    align-items: flex-start; /* Alinhar itens à esquerda */
+    justify-content: flex-start; /* Alinhar itens no início */
+}
+
+
+
+#cpf-container input {
+    width: 100%; /* Largura total */
+    height: 100%;
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda do campo */
+    border-radius: 4px; /* Cantos arredondados */
+    font-size: 1rem; /* Tamanho do texto */
+    color: #333; /* Cor do texto */
+}
+
+#cpf-container input::placeholder {
+    color: #aaa; /* Cor do placeholder */
+}
+
+/* Modo escuro */
+body.dark-theme .ticket-type {
+    background-color: #333; /* Fundo escuro */
+    border-color: #444; /* Borda mais escura */
+}
+
+body.dark-theme .ticket-type h2,
+body.dark-theme .ticket-type label {
+    color: #f1ebeb; /* Texto claro */
+}
+
+body.dark-theme #cpf-container input {
+    background-color: #555; /* Fundo do input escuro */
+    border-color: #666; /* Borda escura */
+    color: #fff; /* Texto claro */
+}
+
+body.dark-theme #cpf-container input::placeholder {
+    color: #faf7f7; /* Cor do placeholder claro */
+}
+.profile-container {
+    position: relative;
+    margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
+  }
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 900px;
+  }
+  
+  .profile-btn:hover {
+    background-color: #30d5c8;
+  }
+  
+  .profile-name {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  /* Menu Dropdown */
+  .profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: none;
+    z-index: 10;
+  }
+  
+  .profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .profile-dropdown li {
+    padding: 10px 20px;
+  }
+  
+  .profile-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+  }
+  
+  .profile-dropdown li a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  /* Mostrar dropdown ao passar o mouse */
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+  
+  /* Restante do código sem alteração */
+  
+  #theme-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  #theme-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Garante que o footer fique no final mesmo com pouco conteúdo */
+html, body {
+  height: 100%; /* Ocupa 100% da altura da janela */
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Layout em coluna */
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+footer {
+  background-color: #121212;
+  padding: 40px 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border: none;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.column {
+  flex: 1;
+  min-width: 200px;
+}
+.column h4 {
+  margin-bottom: 10px;
+}
+.column ul {
+  list-style: none;
+  padding: 0;
+}
+.column ul li {
+  margin-bottom: 5px;
+}
+.column ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.payment-methods img, .awards img {
+  width: 50px; /* Largura fixa */
+  height: 30px; /* Altura fixa */
+  object-fit: contain; /* Ajusta o conteúdo sem distorção */
+}
+.awards {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.awards img {
+  max-height: 50px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #888;
+  max-width: 800px;
+  margin: 20px auto; /* Centraliza horizontalmente */
+  line-height: 1.5;
+}

@@ -15,7 +15,7 @@ import ufrrj.aps.onstage.dao.sessaoDAO;
 import ufrrj.aps.onstage.model.Sessao;
 import ufrrj.aps.onstage.model.evento;
 
-@WebServlet("/EventoDetalheServlet")
+@WebServlet("/DetalhesDoEvento")
 public class EventoDetalheServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

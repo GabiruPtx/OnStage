@@ -27,13 +27,6 @@ document.getElementById("toggle-sobre").addEventListener("click", function() {
   }
 });
 
-// Fecha o menu se clicar fora
-document.addEventListener('click', function (e) {
- if (!profileToggle.contains(e.target) && !profileDropdown.contains(e.target)) {
-   profileDropdown.classList.add('hidden');
- }
-});
-
 // Alterna entre os temas (escuro e claro)
 document.getElementById('theme-toggle').addEventListener('click', function () {
   // Alterna as classes de tema

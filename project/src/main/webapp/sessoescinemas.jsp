@@ -219,7 +219,7 @@
                                         <%
                                             for (Sessao s : sessoesNoLocal) {
                                         %>
-                                            <a href="assentosServlet?id=<%= s.getId() %>">
+                                            <a href="Assentos?id=<%= s.getId() %>">
                                                 <button><%= s.getHorario() %></button>
                                             </a>
                                         <%

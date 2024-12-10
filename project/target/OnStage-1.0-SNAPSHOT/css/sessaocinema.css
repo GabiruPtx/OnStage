@@ -179,7 +179,7 @@ body {
   button {
     background-color: #fff;
     color: #000;
-    background-color: #114b81;
+    background-color: #30b1b2;
     color: white;
     width: 150;
     border: none;
@@ -191,8 +191,18 @@ body {
     margin-left: 20px; /* Aumente esse valor para mover mais para a direita */
     border-radius: 5px;
   }
-  
-  
+
+  .ficha-tecnica {
+    margin-left: 20px;
+    padding-left: 30px;
+  }
+
+  #sinopse-conteudo {
+    margin-left: 20px;
+    padding-left: 30px;
+  }
+
+
   /* Botão de Cadastro/Login */
   .auth-btn {
     background-color: #3f51b5;

@@ -6,13 +6,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const paymentMethods = document.querySelectorAll('input[name="payment"]');
     const pixCode = document.getElementById("pix-code");
 
-    // Alterna tema claro/escuro
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-theme");
-        themeToggle.querySelector(".icon").textContent = 
-            document.body.classList.contains("dark-theme") ? "☀️" : "🌙";
-    });
 
+    
+  // Alterna entre os temas (escuro e claro)
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  // Alterna as classes de tema
+  const isDarkTheme = document.body.classList.toggle('black-theme');
+  document.body.classList.toggle('white-theme', !isDarkTheme);
+
+  // Alterar o ícone do botão conforme o tema
+  let icon = document.querySelector(".theme-toggle .icon");
+  if (isDarkTheme) {
+    icon.innerText = "🌙"; // Lua para tema escuro
+  } else {
+    icon.innerText = "☀️"; // Sol para tema claro
+  }
+
+  // Atualizar a logo com base no tema
+  const logo = document.querySelector('.logo');
+  logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
+});
+
+// Javascript para alternar visibilidade dos campos do cartão de débito
+document.getElementById("debit-card-toggle").addEventListener("click", function() {
+  var debitCardDetails = document.getElementById("debit-card-details");
+  if (debitCardDetails.style.display === "none" || debitCardDetails.style.display === "") {
+      debitCardDetails.style.display = "block";
+      this.innerHTML = "Clique aqui para ocultar o cartão de débito";
+  } else {
+      debitCardDetails.style.display = "none";
+      this.innerHTML = "Clique aqui para preencher o cartão de débito";
+  }
+});
+
+    
     // Preenche lista de assentos do localStorage
     const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats")) || [];
     selectedSeats.forEach(seat => {

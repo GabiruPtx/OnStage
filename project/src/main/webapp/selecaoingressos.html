@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Ingressos</title>
+    <link rel="stylesheet" href="css/selecaoingressos.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="title">Escolha os tipos de ingresso</span>
+        </div>
+
+        <div class="main-content">
+            <!-- Ingressos -->
+            <div class="ticket-options">
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>Inteira</p>
+                        <span>R$ 31,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>Meia Estudante</p>
+                        <span>R$ 17,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>Meia Criança</p>
+                        <span>R$ 17,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>MEIA PESSOA IDOSA</p>
+                        <span>R$ 17,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>Meia Entrada - Pessoa com deficiência</p>
+                        <span>R$ 17,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-label">
+                        <p>Meia Jovens de Baixa Renda</p>
+                        <span>R$ 17,88</span>
+                    </div>
+                    <div class="ticket-quantity">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="0" class="quantity-input" readonly>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo do Pedido e Detalhes -->
+            <div class="order-summary">
+                <div class="movie-info">
+                    <img src="moana2.jpg" alt="Moana 2" class="movie-image">
+                    <div class="movie-details">
+                        <h3>Moana 2</h3>
+                        <p class="classificacao">L | 2D | Dublado</p>
+                        <p>Sala 3 | TER 10/12 15:20</p>
+                        <p>Assento: E2</p>
+                    </div>
+                </div>
+                <div class="total">
+                    <p>Itens: 1</p>
+                    <p>Total: R$ 0,00</p>
+                </div>
+                <div class="payment">
+                    <button>Ir para Pagamento</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-button">
+            <button>Voltar</button>
+        </div>
+    </div>
+
+    <script>
+        const plusButtons = document.querySelectorAll('.quantity-btn');
+        plusButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const input = e.target.parentElement.querySelector('.quantity-input');
+                let currentValue = parseInt(input.value);
+                if (e.target.innerText === "+") {
+                    input.value = currentValue + 1;
+                } else if (e.target.innerText === "-" && currentValue > 0) {
+                    input.value = currentValue - 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

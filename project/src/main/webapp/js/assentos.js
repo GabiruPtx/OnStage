@@ -1,7 +1,38 @@
-document.addEventListener('DOMContentLoaded', function () {
-  console.log("Script carregado com sucesso!");
+document.addEventListener("DOMContentLoaded", () => {
+  const seats = document.querySelectorAll(".seat.available");
+  const confirmBtn = document.getElementById("confirm-selection");
+  let selectedSeats = [];
 
-  // Verifica se o usuário está logado
+  // Evento de clique nos assentos disponíveis
+  seats.forEach(seat => {
+      seat.addEventListener("click", () => {
+          if (!seat.classList.contains("reserved")) {
+              seat.classList.toggle("selected");
+              const seatNumber = seat.textContent;
+              
+              // Adiciona ou remove o assento da lista
+              if (seat.classList.contains("selected")) {
+                  selectedSeats.push(seatNumber);
+              } else {
+                  selectedSeats = selectedSeats.filter(item => item !== seatNumber);
+              }
+          }
+      });
+  });
+
+  // Função de confirmação de seleção de assentos
+  confirmBtn.addEventListener("click", () => {
+      if (selectedSeats.length > 0) {
+          // Armazena os assentos no localStorage
+          localStorage.setItem("selectedSeats", JSON.stringify(selectedSeats));
+          window.location.href = "checkout.html"; // Redireciona para a página de checkout
+      } else {
+          alert("Selecione pelo menos um assento!");
+      }
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  console.log("Script carregado com sucesso!");// Verifica se o usuário está logado
   const isLoggedIn = localStorage.getItem('isLoggedIn');
 
   const authButton = document.getElementById('auth-btn'); // Botão de login/cadastro
@@ -62,21 +93,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Alterna entre os temas (escuro e claro)
   document.getElementById('theme-toggle').addEventListener('click', function () {
     // Alterna as classes de tema
-    const isDarkTheme = document.body.classList.toggle('dark-theme');
-    document.body.classList.toggle('light-theme', !isDarkTheme);
-
-    // Atualiza a logo conforme o tema
-    const logo = document.querySelector('.logo');
-    if (logo) {
-      logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
-    }
+    const isDarkTheme = document.body.classList.toggle('black-theme');
+    document.body.classList.toggle('white-theme', !isDarkTheme);
 
     // Alterar o ícone do botão conforme o tema
     let icon = document.querySelector(".theme-toggle .icon");
     if (isDarkTheme) {
-        icon.innerText = "🌙"; // Lua para tema escuro
+      icon.innerText = "🌙"; // Lua para tema escuro
     } else {
-        icon.innerText = "☀️"; // Sol para tema claro
+      icon.innerText = "☀️"; // Sol para tema claro
     }
-});
-});
+  });
+})

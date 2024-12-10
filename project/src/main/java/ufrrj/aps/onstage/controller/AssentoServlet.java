@@ -30,7 +30,17 @@ public class AssentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-         try {
+        // Pegar o parâmetro sessaoId
+        String sessaoIdParam = req.getParameter("Id");
+        System.out.println("ID da sessão: " + sessaoIdParam);
+        // Verificar se o parâmetro existe
+        if (sessaoIdParam == null || sessaoIdParam.trim().isEmpty()) {
+            System.err.println("ID da sessão não foi fornecido");
+            resp.sendRedirect("erro.jsp");
+            return;
+        }
+        
+        try {
             // Recuperar o ID da sessão da URL
             
             int sessaoId = Integer.parseInt(req.getParameter("Id"));

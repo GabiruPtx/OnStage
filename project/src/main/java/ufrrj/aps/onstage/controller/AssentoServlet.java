@@ -14,9 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ufrrj.aps.onstage.dao.assentoDAO;
+import ufrrj.aps.onstage.dao.eventoDAO;
 import ufrrj.aps.onstage.dao.sessaoDAO;
 import ufrrj.aps.onstage.model.Assento;
 import ufrrj.aps.onstage.model.Sessao;
+import ufrrj.aps.onstage.model.evento;
 
 @WebServlet("/Assento")
 public class AssentoServlet extends HttpServlet {
@@ -24,10 +26,12 @@ public class AssentoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private sessaoDAO sessaoDAO;
     private assentoDAO assentoDAO;
+    private eventoDAO eventoDAO;
 
     public AssentoServlet() {
         this.sessaoDAO = new sessaoDAO();
         this.assentoDAO = new assentoDAO();
+        this.eventoDAO = new eventoDAO();
     }
 
     @Override
@@ -36,26 +40,32 @@ public class AssentoServlet extends HttpServlet {
         // Pegar o parâmetro sessaoId
         String id = req.getParameter("id");
         System.out.println("ID da sessão: " + id);
+        
         // Verificar se o parâmetro existe
         if (id == null || id.trim().isEmpty()) {
+
             System.err.println("ID da sessão não foi fornecido");
             resp.sendRedirect("erro.jsp");
             return;
+
         }
         
         try {
             
             // Buscar a sessão no banco de dados
             Sessao sessao = sessaoDAO.getSessaoById(Integer.parseInt(id));
-            System.out.println("sessao");
+            
             if (sessao == null) {
+
                 // Se a sessão não for encontrada, redirecionar para página de erro
                 System.out.println("Checkpoint evento detalhe servlet");
                 resp.sendRedirect("erro.jsp");
                 return;
+
             }
             
             System.err.println("Ok evento detalhe servlet");
+
             // Buscar os assentos organizados por fileira para a sala desta sessão
             Map<Character, List<Assento>> assentosOrganizados = 
                 assentoDAO.getAssentosOrganizadosPorFileira(sessao.getSala().getId());
@@ -64,25 +74,40 @@ public class AssentoServlet extends HttpServlet {
             req.setAttribute("sessao", sessao);
             req.setAttribute("assentosOrganizados", assentosOrganizados);
             
+            System.out.println("Id da sessão AssentoServlet: " + sessao.getId());
+
             // Encaminhar para a página JSP
             req.getRequestDispatcher("/assentos.jsp")
                   .forward(req, resp);
             
         } catch (NumberFormatException e) {
+
             // Log do erro e redirecionamento para página de erro
             System.err.println("Erro ao converter ID da sessão: " + e.getMessage());
             resp.sendRedirect("erro.jsp");
             
         } catch (SQLException e) {
+
             // Log do erro e redirecionamento para página de erro
             System.err.println("Erro ao acessar banco de dados: " + e.getMessage());
             resp.sendRedirect("erro.jsp");
+
         }
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+            // Pegar o parâmetro sessaoId
+            String id = req.getParameter("id");
+            System.out.println("ID da sessão: " + id);
+            // Verificar se o parâmetro existe
+            if (id == null || id.trim().isEmpty()) {
+                System.err.println("ID da sessão não foi fornecido");
+                resp.sendRedirect("erro.jsp");
+                return;
+            }
         
             try {
             // Recupera os parâmetros enviados pelo formulário
@@ -97,9 +122,17 @@ public class AssentoServlet extends HttpServlet {
 
             // Obtém o id da sala através da sessão
             Sessao sessao = sessaoDAO.getSessaoById(sessaoId);
+            System.out.println("Id do evento: " + sessao.getId_evento());
+            int id_evento = sessao.getId_evento();
+            evento evento = eventoDAO.buscarEventoPorId (id_evento);
+
             if (sessao == null) {
                 throw new IllegalArgumentException("Sessão não encontrada.");
             }
+            if (evento == null) {
+                throw new IllegalArgumentException("Evento não encontrado.");
+            }
+            
             int salaId = sessao.getSala().getId();
 
             // Converte o JSON de assentos selecionados em uma lista de objetos
@@ -117,6 +150,8 @@ public class AssentoServlet extends HttpServlet {
             }
 
             // Redireciona para a página de ingressos
+            req.setAttribute("sessao", sessao);
+            req.setAttribute("evento", evento);
             req.setAttribute("assentos", assentos);
             req.getRequestDispatcher("selecaoingressos.jsp").forward(req, resp);
 

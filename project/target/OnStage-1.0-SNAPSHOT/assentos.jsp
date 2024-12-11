@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ufrrj.aps.onstage.model.Assento" %>
 <%@ page import="ufrrj.aps.onstage.model.cliente"%>
+<%@ page import="ufrrj.aps.onstage.model.Sessao"%>
 
 
 <!DOCTYPE html>
@@ -29,6 +30,7 @@
           <%
           HttpSession ssessao = request.getSession(false);
           cliente cliente = (cliente) ssessao.getAttribute("cliente");
+          Sessao sessao = (Sessao) ssessao.getAttribute("sessao");
           if(cliente == null) {
 
           %>
@@ -76,6 +78,13 @@
     <main>
       <h1 class="page-title">Escolha seu Assento</h1>
       <div class="screen">Tela</div>
+      <%
+        if (sessao != null) {
+            System.out.println("Id da sessão tela assentos.jsp: " + sessao.getId());
+        } else {
+            System.out.println("Sessão é null. Não foi possível acessar o ID.");
+        }
+      %>
       
       <!-- Assentos -->
       <div class="cinema-seats">
@@ -122,6 +131,10 @@
       <button id="confirm-selection">Confirmar Seleção</button>
   </main>
   
+
+  <script>
+      const sessaoId = "<%= sessao != null ? sessao.getId() : "" %>";
+  </script>
     <!-- Rodapé -->
   <footer>
     <div class="container">

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ page import="ufrrj.aps.onstage.model.cliente"%>
+<%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
+<%@ page import="java.time.LocalDateTime, java.time.format.DateTimeFormatter" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,19 +62,37 @@
 
         <!-- Conteúdo Principal -->
         <div class="main-content">
+            <!-- Dados da Sessão -->
+            <% 
+                sessao sessaoEvento = (sessao) sessao.getAttribute("sessao");
+                evento eventoAtual = (evento) sessao.getAttribute("evento");
+                List<String> assentosSelecionados = (List<String>) sessao.getAttribute("assentosSelecionados");
+            %>
+            <div class="movie-info">
+                <h3><%= eventoAtual.getNome() %></h3>
+                <p class="classificacao"><%= eventoAtual.getClassificacao() %> | <%= eventoAtual.getGenero() %></p>
+                <p>Sala <%= sessaoEvento.getSala() %> | <%= sessaoEvento.getData() %> <%= sessaoEvento.getHorario() %></p>
+                <p>Assentos: <%= String.join(", ", assentosSelecionados) %></p>
+            </div>
+
+            <!-- Tipos de Ingressos -->
             <div class="ticket-options">
-                <div class="ticket">
-                    <div class="ticket-label">
-                        <p>Inteira</p>
-                        <span>R$ 31,88</span>
+                <% 
+                    Map<String, Double> tiposIngressos = (Map<String, Double>) sessao.getAttribute("tiposIngressos");
+                    for (Map.Entry<String, Double> ingresso : tiposIngressos.entrySet()) { 
+                %>
+                    <div class="ticket">
+                        <div class="ticket-label">
+                            <p><%= ingresso.getKey() %></p>
+                            <span>R$ <%= String.format("%.2f", ingresso.getValue()) %></span>
+                        </div>
+                        <div class="ticket-quantity">
+                            <button class="quantity-btn">-</button>
+                            <input type="number" value="0" class="quantity-input" readonly>
+                            <button class="quantity-btn">+</button>
+                        </div>
                     </div>
-                    <div class="ticket-quantity">
-                        <button class="quantity-btn">-</button>
-                        <input type="number" value="0" class="quantity-input" readonly>
-                        <button class="quantity-btn">+</button>
-                    </div>
-                </div>
-                <!-- Adicionar mais tipos de ingressos aqui -->
+                <% } %>
                 <div class="back-button">
                     <a href="assentos.html">
                         <button>Voltar</button>
@@ -80,28 +100,6 @@
                 </div>
             </div>
 
-            <!-- Resumo do Pedido -->
-            <div class="order-summary">
-                <div class="movie-info">
-                    <div class="movie-details">
-                        <h3>Moana 2</h3>
-                        <p class="classificacao">L | 2D | Dublado</p>
-                        <p>Sala 3 | TER 10/12 15:20</p>
-                        <p>Assento: E2</p>
-                    </div>
-                </div>
-                <div class="total">
-                    <p>Itens: 1</p>
-                    <p>Total: R$ 0,00</p>
-                </div>
-                <div class="payment">
-                    <a href="checkout.html">
-                        <button>Ir para Pagamento</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Rodapé -->
     <footer>

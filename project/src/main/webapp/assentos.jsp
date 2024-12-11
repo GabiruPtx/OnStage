@@ -23,35 +23,50 @@
                 <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
             </a>
         </div>
+        <!-- Conteúdo de autenticação -->
         <div id="auth-container">
-            <%
-            // Verifica se existe uma sessão de usuário
-            String userName = (String) session.getAttribute("userName");
-            String userInitials = (String) session.getAttribute("userInitials");
-            
-            // Verifica se o usuário está logado
-            if (userName == null || userName.isEmpty()) {
-                // Redireciona para a página de login se não estiver autenticado
-                response.sendRedirect("login.jsp");
-            } else {
-            %>
-                <div id="profile-container" class="profile-container">
-                    <button class="profile-btn">
-                        <%= userInitials %>
-                        <span class="profile-name"><%= userName %></span>
-                    </button>
-                    <div class="profile-dropdown">
-                        <ul>
-                            <li><a href="perfil.jsp">Minha conta</a></li>
-                            <li><a href="#">Central de ajuda</a></li>
-                            <li><a href="logout.jsp" id="logout-btn">Sair</a></li>
-                        </ul>
-                    </div>
+          <%
+          HttpSession ssessao = request.getSession(false);
+          cliente cliente = (cliente) ssessao.getAttribute("cliente");
+          if(cliente == null) {
+
+          %>
+               <!-- Visitante (não autenticado) -->
+               <button id="auth-btn" class="auth-btn" onclick="window.location.href='login.html'">Cadastro / Login</button>
+          
+          <%
+              } else {
+                  
+                  String nome = cliente.getNome();
+                  String sobrenome = cliente.getSobrenome();
+                  String iniciais = "";
+                  if(nome != null && nome.length() > 0) {
+                      iniciais += nome.charAt(0);
+                  }
+                  if(sobrenome != null && sobrenome.length() > 0) {
+                      iniciais += sobrenome.charAt(0);
+                  }
+                  System.out.println("5. Iniciais geradas: " + iniciais);
+          %>
+
+              <!-- Usuário autenticado -->
+              <div id="profile-container" class="profile-container" style="display: block;">
+                <button class="profile-btn">
+                    <%= iniciais %>
+                    <p class="profile-name"><%= nome + " " + sobrenome %></p>
+                </button>
+                <div class="profile-dropdown">
+                    <ul>
+                        <li><a href="perfil.jsp">Minha conta</a></li>
+                        <li><a href="#">Central de ajuda</a></li>
+                        <li><a href="LogoutServlet" id="logout-btn">Sair</a></li>
+                    </ul>
                 </div>
-            <%
-            }
-            %>
-        </div>
+            </div>
+          <%
+              }
+          %>
+      </div>
         <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
             <span class="icon">☀️</span>
         </button>

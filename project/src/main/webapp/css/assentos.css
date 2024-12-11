@@ -13,11 +13,12 @@ body {
 }
 
 /* Cabeçalho */
+/* Estilo base do header */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff; /* Branco padrão */
+    background-color: #ffffff;
     padding: 15px 20px;
     color: #333;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -25,6 +26,13 @@ body {
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo do header no tema escuro */
+body.dark-theme .header {
+    background-color: #333;
+    color: #f1f1f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Estilo padrão para o título */
@@ -47,11 +55,9 @@ body.dark-theme #seat-selection-title {
 }
 
 .theme-toggle {
-    background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #333;
     transition: color 0.3s ease;
 }
 
@@ -59,12 +65,18 @@ body.dark-theme #seat-selection-title {
     display: inline-block;
 }
 
-/* Título da página */
+/* Estilo base do título */
 .page-title {
     text-align: center;
     font-size: 2rem;
     margin: 20px 0;
     color: #333;
+    transition: color 0.3s ease; /* Adiciona transição suave */
+}
+
+/* Estilo do título no tema escuro */
+body.dark-theme .page-title {
+    color: #f1f1f1;
 }
 
 /* Tela */
@@ -135,6 +147,25 @@ body.dark-theme #seat-selection-title {
     background-color: #007bff; /* Azul para assentos acessíveis */
 }
 
+/* Estilo para assento acessível quando selecionado */
+.seat.disabled-seat.selected {
+    background-color: #ffc107; /* Mesma cor amarela dos outros assentos selecionados */
+}
+
+/* Mantenha o hover para assentos acessíveis disponíveis */
+.seat.disabled-seat.available:hover {
+    background-color: #28a745;
+}
+
+/* Se quiser manter alguma indicação visual de que ainda é um assento acessível quando selecionado */
+.seat.disabled-seat.selected::after {
+    content: '♿';
+    position: absolute;
+    font-size: 12px;
+    bottom: 2px;
+    right: 2px;
+}
+
 .seat.disabled-seat.reserved {
     background-color: #004085; /* Azul mais escuro quando reservado */
 }
@@ -149,16 +180,6 @@ body.dark-theme #seat-selection-title {
     border: 2px solid #FFD700;
 }
 
-/* Ajustes no painel de informações */
-.info-panel {
-    flex-wrap: wrap;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.info-panel div {
-    margin: 5px 15px;
-}
 
 /* Ajuste para o hover em assentos disponíveis */
 .seat.available:hover {
@@ -179,14 +200,18 @@ body.dark-theme #seat-selection-title {
 .info-panel {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
-    margin: 20px 0;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
+/* Ajuste para os itens dentro do painel */
 .info-panel div {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin: 5px 15px;
 }
 
 .info-panel .seat {
@@ -195,6 +220,36 @@ body.dark-theme #seat-selection-title {
     line-height: 20px;
     font-size: 0.8rem;
     border-radius: 3px;
+    pointer-events: none; /* Remove a interatividade */
+    cursor: default; /* Remove o cursor pointer */
+    transform: none !important; /* Impede qualquer transformação */
+}
+
+/* Remove o efeito hover dos assentos no painel */
+.info-panel .seat:hover {
+    transform: none !important;
+    background-color: inherit !important; /* Mantém a cor original */
+}
+
+/* Mantém as cores específicas para cada tipo */
+.info-panel .seat.available {
+    background-color: #6c757d;
+}
+
+.info-panel .seat.reserved {
+    background-color: #dc3545;
+}
+
+.info-panel .seat.selected {
+    background-color: #ffc107;
+}
+
+.info-panel .seat.premium {
+    border: 2px solid #FFD700;
+}
+
+.info-panel .seat.disabled-seat {
+    background-color: #007bff;
 }
 
 /* Botão Confirmar */
@@ -221,7 +276,6 @@ body.dark-theme #seat-selection-title {
     padding: 10px;
     background-color: #000000; /* Preto padrão */
     color: white;
-    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -230,11 +284,6 @@ body.dark-theme #seat-selection-title {
 /* Tema Escuro */
 body.dark-theme {
     background-color: #121212;
-    color: #f1f1f1;
-}
-
-body.dark-theme .header {
-    background-color: #333; /* Cabeçalho no tema escuro */
     color: #f1f1f1;
 }
 
@@ -282,13 +331,12 @@ html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1a1a1a;
-    color: #fff;
   }
+
   footer {
+    position: relative;
     background-color: #121212;
     padding: 40px 20px;
-    position: fixed;
     bottom: 0;
     width: 100%;
     border: none;

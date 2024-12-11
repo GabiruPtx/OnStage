@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Ingressos</title>
+    <link rel="stylesheet" href="css/selecaoingressos.css">
+    <!-- Link para a fonte Roboto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="js/selecaoingressos.js" defer>
+      </script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
+            </div>
+                        <div id="auth-container">
+                <!-- Botão de Cadastro/Login -->
+                <button id="auth-btn" class="auth-btn">Cadastro / Login</button>
+              
+                <!-- Botão de Perfil e Menu -->
+                <div id="profile-container" class="profile-container" style="display: none;">
+                  <button class="profile-btn">
+                    GG
+                    <span class="profile-name">Gabriel Garcia</span>
+                  </button>
+                  <div class="profile-dropdown">
+                    <ul>
+                      <li><a href="perfil.html">Minha Conta</a></li>
+                      <li><a href="#">Central de Ajuda</a></li>
+                      <li><a href="#" id="logout-btn">Sair</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                <span class="icon">☀️</span>
+            </button>
+        </header>
+        <div class="main-content">
+            <!-- Ingressos -->
+            <div class="ticket-options">
+              <div class="ticket">
+                  <div class="ticket-label">
+                      <p>Inteira</p>
+                      <span>R$ 31,88</span>
+                  </div>
+                  <div class="ticket-quantity">
+                      <button class="quantity-btn">-</button>
+                      <input type="number" value="0" class="quantity-input" readonly>
+                      <button class="quantity-btn">+</button>
+                  </div>
+              </div>
+              <div class="ticket">
+                  <div class="ticket-label">
+                      <p>Meia Estudante</p>
+                      <span>R$ 17,88</span>
+                  </div>
+                  <div class="ticket-quantity">
+                      <button class="quantity-btn">-</button>
+                      <input type="number" value="0" class="quantity-input" readonly>
+                      <button class="quantity-btn">+</button>
+                  </div>
+              </div>
+              <div class="ticket">
+                  <div class="ticket-label">
+                      <p>Meia Criança</p>
+                      <span>R$ 17,88</span>
+                  </div>
+                  <div class="ticket-quantity">
+                      <button class="quantity-btn">-</button>
+                      <input type="number" value="0" class="quantity-input" readonly>
+                      <button class="quantity-btn">+</button>
+                  </div>
+              </div>
+              <div class="ticket">
+                  <div class="ticket-label">
+                      <p>Meia - Pessoa Idosa</p>
+                      <span>R$ 17,88</span>
+                  </div>
+                  <div class="ticket-quantity">
+                      <button class="quantity-btn">-</button>
+                      <input type="number" value="0" class="quantity-input" readonly>
+                      <button class="quantity-btn">+</button>
+                  </div>
+              </div>
+              <div class="ticket">
+                  <div class="ticket-label">
+                      <p>Meia Entrada - Pessoa com Deficiência</p>
+                      <span>R$ 17,88</span>
+                  </div>
+                  <div class="ticket-quantity">
+                      <button class="quantity-btn">-</button>
+                      <input type="number" value="0" class="quantity-input" readonly>
+                      <button class="quantity-btn">+</button>
+                  </div>
+              </div>
+          
+              <!-- Botão de Voltar -->
+              <div class="back-button">
+                <a href="assentos.html">
+                  <button>Voltar</button>
+                  </a>
+              </div>
+          </div>
+
+
+            <!-- Resumo do Pedido e Detalhes -->
+            <div class="order-summary">
+                <div class="movie-info">
+                    <div class="movie-details">
+                        <h3>Moana 2</h3>
+                        <p class="classificacao">L | 2D | Dublado</p>
+                        <p>Sala 3 | TER 10/12 15:20</p>
+                        <p>Assento: E2</p>
+                    </div>
+                </div>
+                <div class="total">
+                    <p>Itens: 1</p>
+                    <p>Total: R$ 0,00</p>
+                </div>
+                <div class="payment">
+                  <a href="checkout.html">
+                    <button>Ir para Pagamento</button>
+                  </a>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const plusButtons = document.querySelectorAll('.quantity-btn');
+        plusButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const input = e.target.parentElement.querySelector('.quantity-input');
+                let currentValue = parseInt(input.value);
+                if (e.target.innerText === "+") {
+                    input.value = currentValue + 1;
+                } else if (e.target.innerText === "-" && currentValue > 0) {
+                    input.value = currentValue - 1;
+                }
+            });
+        });
+    </script>
+    <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="column">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">Filmes</a></li>
+          <li><a href="#">Musicais</a></li>
+          <li><a href="#">Peças teatrais</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Quem Somos</a></li>
+          <li><a href="#">Assessoria de Imprensa</a></li>
+          <li><a href="#">Vale-Presente Corporativo</a></li>
+          <li><a href="#">Faça parte do time</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#">Privacidade e Segurança</a></li>
+          <li><a href="#">Trocas e Cancelamentos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Redes Sociais</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="column payment-methods">
+        <h4>Formas de Pagamento</h4>
+        <div>
+          <img src="img/visa.jpg" alt="Visa">
+          <img src="img/mastercard.jpg" alt="Mastercard">
+          <img src="img/nubank.jpg" alt="Nubank">
+          <!-- Adicione mais ícones conforme necessário -->
+        </div>
+      </div>
+      <div class="column awards">
+        <h4>Selo do Consumidor</h4>
+        <img src="img/reclame aqui.png" alt="Reclame Aqui">
+        <img src="img/premio.png" alt="Prêmio Melhor App">
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+        OnStage Ltda / CNPJ: 00.000.000/0001-00 Endereço: Rua Dois de Fevereiro, 85 - 5º andar - Engenho de Dentro - RJ - 20000-000<br>
+        Atendimento ao cliente © 2024 - Copyright OnStage.com - Todos os direitos reservados.
+    </div>
+  </footer>
+</body>
+  
+</html>

@@ -218,8 +218,9 @@
                                     <div class="times">
                                         <%
                                             for (Sessao s : sessoesNoLocal) {
+                                                System.out.println("Checkpoint sessoescinemas - Sessão: " + s.getId());
                                         %>
-                                            <a href="Assentos?id=<%=s.getId()%>">
+                                            <a href="Assento?id=<%=s.getId()%>">
                                                 <button><%= s.getHorario() %></button>
                                             </a>
                                         <%

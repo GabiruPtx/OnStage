@@ -44,4 +44,21 @@ public class assentoDAO {
         }
         return assentos;
     }
+
+    public void atualizarEstadoAssento(int salaId, char fileira, int numero, String novoEstado) 
+    throws SQLException {
+    String sql = "UPDATE assento SET estado = ? WHERE fileira = ? AND numero = ? AND id_sala = ?";
+    
+    try (Connection connection = DBConnection.getConection();
+    PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+        stmt.setString(1, novoEstado);
+        stmt.setString(2, String.valueOf(fileira));
+        stmt.setInt(3, numero);
+        stmt.setInt(4, salaId);
+        stmt.executeUpdate();
+
+    }
+}
+
 }

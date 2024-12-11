@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +18,7 @@ import ufrrj.aps.onstage.dao.sessaoDAO;
 import ufrrj.aps.onstage.model.Assento;
 import ufrrj.aps.onstage.model.Sessao;
 
-@WebServlet("/Assentos")
+@WebServlet("/Assento")
 public class AssentoServlet extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
@@ -31,29 +34,28 @@ public class AssentoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         // Pegar o parâmetro sessaoId
-        String sessaoIdParam = req.getParameter("Id");
-        System.out.println("ID da sessão: " + sessaoIdParam);
+        String id = req.getParameter("id");
+        System.out.println("ID da sessão: " + id);
         // Verificar se o parâmetro existe
-        if (sessaoIdParam == null || sessaoIdParam.trim().isEmpty()) {
+        if (id == null || id.trim().isEmpty()) {
             System.err.println("ID da sessão não foi fornecido");
             resp.sendRedirect("erro.jsp");
             return;
         }
         
         try {
-            // Recuperar o ID da sessão da URL
-            
-            int sessaoId = Integer.parseInt(req.getParameter("Id"));
             
             // Buscar a sessão no banco de dados
-            Sessao sessao = sessaoDAO.getSessaoById(sessaoId);
-            
+            Sessao sessao = sessaoDAO.getSessaoById(Integer.parseInt(id));
+            System.out.println("sessao");
             if (sessao == null) {
                 // Se a sessão não for encontrada, redirecionar para página de erro
+                System.out.println("Checkpoint evento detalhe servlet");
                 resp.sendRedirect("erro.jsp");
                 return;
             }
             
+            System.err.println("Ok evento detalhe servlet");
             // Buscar os assentos organizados por fileira para a sala desta sessão
             Map<Character, List<Assento>> assentosOrganizados = 
                 assentoDAO.getAssentosOrganizadosPorFileira(sessao.getSala().getId());
@@ -81,7 +83,48 @@ public class AssentoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Se o método POST não for necessário, pode ser removido
+        
+            try {
+            // Recupera os parâmetros enviados pelo formulário
+            String assentosSelecionados = req.getParameter("assentosSelecionados");
+            String sessaoIdParam = req.getParameter("sessaoId");
+
+            if (assentosSelecionados == null || sessaoIdParam == null) {
+                throw new IllegalArgumentException("Dados insuficientes para processar a solicitação.");
+            }
+
+            int sessaoId = Integer.parseInt(sessaoIdParam);
+
+            // Obtém o id da sala através da sessão
+            Sessao sessao = sessaoDAO.getSessaoById(sessaoId);
+            if (sessao == null) {
+                throw new IllegalArgumentException("Sessão não encontrada.");
+            }
+            int salaId = sessao.getSala().getId();
+
+            // Converte o JSON de assentos selecionados em uma lista de objetos
+            Gson gson = new Gson();
+            List<Map<String, String>> assentos = gson.fromJson(assentosSelecionados, new TypeToken<List<Map<String, String>>>(){}.getType());
+
+            // Atualiza cada assento no banco de dados
+            for (Map<String, String> assento : assentos) {
+                char fileira = assento.get("id").charAt(0);
+                int numero = Integer.parseInt(assento.get("id").substring(1));
+                String tipo = assento.get("tipo");
+
+                // Define o novo estado como reservado
+                assentoDAO.atualizarEstadoAssento(salaId, fileira, numero, "RESERVADO");
+            }
+
+            // Redireciona para a página de ingressos
+            req.setAttribute("assentos", assentos);
+            req.getRequestDispatcher("selecaoingressos.jsp").forward(req, resp);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                resp.sendRedirect("erro.jsp");
+            }
+
     }
 
 }

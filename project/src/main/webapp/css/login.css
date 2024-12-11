@@ -141,6 +141,15 @@ button {
     transition: background-color 0.3s ease;
 }
 
+button a {
+    color: #fdfdfd;
+    text-decoration: none;
+}
+
+button.cadastro-btn {
+    color: #fdfdfd; 
+}
+
 button:hover {
     background-color: #0056b3;
 }

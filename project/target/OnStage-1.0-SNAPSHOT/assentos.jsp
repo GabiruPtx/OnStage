@@ -2,6 +2,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ufrrj.aps.onstage.model.Assento" %>
+<%@ page import="ufrrj.aps.onstage.model.cliente"%>
 
 
 <!DOCTYPE html>
@@ -9,8 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/assentos.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
     <script src="js/assentos.js" defer></script>
     <title>OnStage - Escolha de Assentos</title>

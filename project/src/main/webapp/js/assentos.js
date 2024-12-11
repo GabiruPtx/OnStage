@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
             form.appendChild(assentosInput);
 
             // Adicionar o ID da sessão (assumindo que está disponível na URL)
-            const urlParams = new URLSearchParams(window.location.search);
-            const sessaoId = urlParams.get('id');
+            const sessaoId = document.getElementById('sessao-id').value;
             const sessaoInput = document.createElement('input');
             sessaoInput.type = 'hidden';
             sessaoInput.name = 'sessaoId';
             sessaoInput.value = sessaoId;
+            console.log(sessaoId);
             form.appendChild(sessaoInput);
 
             // Adicionar o formulário ao documento e enviá-lo

@@ -21,11 +21,12 @@ public class sessaoDAO {
 
             // Definir o parâmetro antes de executar a consulta
             stmt.setInt(1, idSessao);
-
+            System.out.println("ID da sessão: " + idSessao);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     Sessao sessao = new Sessao();
                     sessao.setId(rs.getInt("id_sessao"));
+                    sessao.setId_evento(rs.getInt("id_evento"));
                     sessao.setData(rs.getDate("data"));
                     sessao.setHorario(rs.getString("horario"));
 

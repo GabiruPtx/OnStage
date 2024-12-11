@@ -2,6 +2,7 @@ package ufrrj.aps.onstage.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class AssentoServlet extends HttpServlet {
         // Pegar o parâmetro sessaoId
         String id = req.getParameter("id");
         System.out.println("ID da sessão: " + id);
-        
+
         // Verificar se o parâmetro existe
         if (id == null || id.trim().isEmpty()) {
 
@@ -71,8 +72,8 @@ public class AssentoServlet extends HttpServlet {
                 assentoDAO.getAssentosOrganizadosPorFileira(sessao.getSala().getId());
             
             // Adicionar os dados ao request para usar no JSP
-            req.setAttribute("sessao", sessao);
-            req.setAttribute("assentosOrganizados", assentosOrganizados);
+            req.getSession().setAttribute("sessao", sessao);
+            req.getSession().setAttribute("assentosOrganizados", assentosOrganizados);
             
             System.out.println("Id da sessão AssentoServlet: " + sessao.getId());
 
@@ -100,8 +101,14 @@ public class AssentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
             // Pegar o parâmetro sessaoId
-            String id = req.getParameter("id");
-            System.out.println("ID da sessão: " + id);
+
+            System.out.println("### Parâmetros recebidos ###");
+            Map<String, String[]> parametros = req.getParameterMap();
+            for (Map.Entry<String, String[]> entry : parametros.entrySet()) {
+                System.out.println("Chave: " + entry.getKey() + ", Valores: " + Arrays.toString(entry.getValue()));
+            }
+
+            String id = req.getParameter("sessaoId");
             // Verificar se o parâmetro existe
             if (id == null || id.trim().isEmpty()) {
                 System.err.println("ID da sessão não foi fornecido");

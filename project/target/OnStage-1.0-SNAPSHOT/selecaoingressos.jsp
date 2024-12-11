@@ -3,6 +3,8 @@
 <%@ page import="ufrrj.aps.onstage.model.cliente"%>
 <%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
 <%@ page import="java.time.LocalDateTime, java.time.format.DateTimeFormatter" %>
+<%@ page import="ufrrj.aps.onstage.model.Sessao, ufrrj.aps.onstage.model.evento" %>
+<%@ page import="ufrrj.aps.onstage.model.Assento" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">

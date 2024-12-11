@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ufrrj.aps.onstage.model.Assento" %>
 <%@ page import="ufrrj.aps.onstage.model.cliente"%>
-<%@ page import="ufrrj.aps.onstage.model.Sessao"%>
+<%@ page import="ufrrj.aps.onstage.model.Sessao, ufrrj.aps.onstage.model.evento" %>
+
 
 
 <!DOCTYPE html>
@@ -28,10 +29,11 @@
         <!-- Conteúdo de autenticação -->
         <div id="auth-container">
           <%
-          
+
           HttpSession ssessao = request.getSession(false);
-          cliente cliente = (cliente) ssessao.getAttribute("cliente");
-          Sessao sessao = (Sessao) ssessao.getAttribute("sessao");
+          cliente cliente = (cliente) session.getAttribute("cliente");
+          Sessao s = (Sessao) session.getAttribute("sessao");
+
           if(cliente == null) {
 
           %>
@@ -80,10 +82,14 @@
       <h1 class="page-title">Escolha seu Assento</h1>
       <div class="screen">Tela</div>
       <%
-        if (sessao != null) {
-            System.out.println("Id da sessão tela assentos.jsp: " + sessao.getId());
+        if (s != null) {
+
+            System.out.println("Id da sessão tela assentos.jsp: " + s.getId());
+
         } else {
+
             System.out.println("Sessão é null. Não foi possível acessar o ID.");
+
         }
       %>
       
@@ -128,13 +134,16 @@
           <div><span class="seat premium available"></span> Premium</div>
           <div><span class="seat disabled-seat available"></span> Acessível</div>
       </div>
-      
+      <imput type="hidden" id="sessao-id" value="">
       <button id="confirm-selection">Confirmar Seleção</button>
   </main>
   
 
   <script>
-      const sessaoId = "<%= sessao != null ? sessao.getId() : "" %>";
+      const sessaoId = "<%= s != null ? s.getId() : "" %>";
+      console.log("Sessão ID: " + sessaoId);
+      const sessaoIdInput = document.getElementById("sessao-id");
+      sessaoIdInput.value = sessaoId;
   </script>
     <!-- Rodapé -->
   <footer>

@@ -145,7 +145,8 @@
       const sessaoIdInput = document.getElementById("sessao-id");
       sessaoIdInput.value = sessaoId;
   </script>
-    <!-- Rodapé -->
+  
+  <!-- Rodapé -->
   <footer>
     <div class="container">
       <div class="column">

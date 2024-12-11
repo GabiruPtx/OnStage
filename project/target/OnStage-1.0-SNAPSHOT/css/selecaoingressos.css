@@ -246,8 +246,10 @@ body {
 }
 
 .movie-info {
-    display: flex;
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* Garante que os itens fiquem um abaixo do outro */
+  margin-bottom: 15px;
+  
 }
 
 .movie-image {
@@ -285,6 +287,7 @@ body {
 }
 
 .back-button {
+    margin-bottom: 30px; /* Espaçamento abaixo */
     margin-top: 10px; /* Espaçamento acima */
     margin-left: 0px; /* Ajusta alinhamento para seguir os itens */
     text-align: center; /* Garante centralização */

@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ufrrj.aps.onstage.model.Assento" %>
 <%@ page import="ufrrj.aps.onstage.model.cliente"%>
-<%@ page import="ufrrj.aps.onstage.model.Sessao"%>
+<%@ page import="ufrrj.aps.onstage.model.Sessao, ufrrj.aps.onstage.model.evento" %>
+
 
 
 <!DOCTYPE html>
@@ -144,7 +145,8 @@
       const sessaoIdInput = document.getElementById("sessao-id");
       sessaoIdInput.value = sessaoId;
   </script>
-    <!-- Rodapé -->
+  
+  <!-- Rodapé -->
   <footer>
     <div class="container">
       <div class="column">

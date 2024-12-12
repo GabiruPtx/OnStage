@@ -3,7 +3,7 @@ package ufrrj.aps.onstage.model;
 public class endereco {
 
     private Long id;
-    private Long idCliente;
+    private int idCliente;
     private String logradouro;
     private String numero;
     private String complemento;
@@ -36,11 +36,11 @@ public class endereco {
         this.id = id;
     }
 
-    public Long getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Long idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -99,7 +99,5 @@ public class endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
-
-
 
 }

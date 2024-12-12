@@ -11,59 +11,187 @@
     <!-- Cabeçalho -->
     <header class="header">
         <div class="logo-container">
-            <a href="inicial.html">
-            <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
-           
-
+            <a href="index.html">
+                <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
+            </a>
         </div>
-        </a>
-        <button class="theme-toggle" id="theme-toggle">
-            <span class="icon">🌙</span>
+        <div id="auth-container">
+            <button id="auth-btn" class="auth-btn">Cadastro / Login</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+            <span class="icon">☀️</span>
         </button>
     </header>
 
     <!-- Tela de Checkout -->
     <main>
-        <h1 class="page-title">Checkout</h1>
-
-        <!-- Lista de Assentos Escolhidos -->
-        <section class="selected-seats">
-            <h2>Assentos Selecionados</h2>
-            <ul id="seat-list"></ul>
-        </section>
-
-        <!-- Opções de Pagamento -->
-        <section class="payment-options">
-            <h2>Método de Pagamento</h2>
-            <form id="payment-form">
-                <div class="payment-method">
-                    <label>
-                        <input type="radio" name="payment" value="card" checked>
-                        Cartão de Crédito
-                    </label>
-                    <div class="card-details">
-                        <input type="text" placeholder="Nome no Cartão" id="card-name">
-                        <input type="text" placeholder="Número do Cartão" id="card-number" maxlength="16">
-                        <input type="text" placeholder="Validade (MM/AA)" id="card-expiry" maxlength="5">
-                        <input type="text" placeholder="CVV" id="card-cvv" maxlength="3">
+        <div class="checkout-container">
+            <div class="payment-left">
+                <h1>Resumo do Pedido</h1>
+                <div class="movie-info">
+                    <div class="movie-details">
+                        <h2>Moana 2</h2>
+                        <p><strong>Sala 5</strong> | <strong>SEG 09/12 20:30</strong></p>
+                        <p>Assentos: 12 21</p>
+                        <p>Ingresso: 1x VIP INTEIRA</p>
+                        <p>Pagamento: Cartão de Crédito</p>
                     </div>
                 </div>
-                <div class="payment-method">
-                    <label>
-                        <input type="radio" name="payment" value="pix">
-                        Pix
-                    </label>
-                    <p class="pix-instructions" id="pix-code"></p>
+                <div class="price-summary">
+                    <div class="price-item">
+                        <span>Itens</span><span>1</span>
+                    </div>
+                    <div class="total-price">
+                        <span>Total</span><span>R$ 30,29</span>
+                    </div>
                 </div>
+                <button class="submit-button">Finalizar Compra</button>
+            </div>
 
-                <button type="submit" class="submit-button">Finalizar Compra</button>
-            </form>
-        </section>
+            <div class="payment-right">
+                <h2>Opções de Pagamento</h2>
+                <form id="payment-form">
+                    <div class="payment-method">
+                        <label>
+                            <input type="radio" name="payment" value="visa" checked>
+                            <img src="img/visa.jpg" alt="Visa"> Cartão de Crédito
+                        </label>
+                        <!-- Adicionando um botão para mostrar as informações do cartão -->
+                        <button type="button" id="credit-card-toggle" class="credit-card-toggle">Clique aqui para preencher o cartão de crédito</button>
+                        
+                        <div class="card-details" id="card-details">
+                            <input type="text" placeholder="Nome no Cartão" id="card-name">
+                            <input type="text" placeholder="Número do Cartão" id="card-number" maxlength="16">
+                            <input type="text" placeholder="Validade (MM/AA)" id="card-expiry" maxlength="5">
+                            <input type="text" placeholder="CVV" id="card-cvv" maxlength="3">
+                        </div>
+                    </div>
+
+                    <div class="payment-method">
+                        <label>
+                            <input type="radio" name="payment" value="pix">
+                            <img src="img/logo-pix-1024x1024.png" alt="Pix"> Pix
+                        </label>
+                        <p class="pix-instructions">Copie o código abaixo para pagar via Pix.</p>
+                        <div id="pix-code">Código Pix: 1234-5678-9012</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <label>
+                            <input type="radio" name="payment" value="google-pay">
+                            <img src="img/pngtree-google-pay-payment-software-vector-png-image_9183298.png" alt="Google Pay"> Google Pay
+                        </label>
+                    </div>
+
+                    <div class="payment-method">
+                        <label>
+                            <input type="radio" name="payment" value="nubank">
+                            <img src="img/nubank.jpg" alt="Nubank"> Nubank
+                        </label>
+                    </div>
+
+                    <div class="payment-method">
+                      <label>
+                          <input type="radio" name="payment" value="credit-card" id="debit-card-radio">
+                          <img src="img/mastercard.jpg" alt="Mastercard"> Cartão de Débito
+                      </label>
+                      <!-- Botão para mostrar os campos do cartão de débito -->
+                      <button type="button" id="debit-card-toggle" class="debit-card-toggle">Clique aqui para preencher o cartão de débito</button>
+                      
+                      <!-- Campos do cartão de débito -->
+                      <div class="card-details" id="debit-card-details" style="display: none;">
+                          <input type="text" placeholder="Nome no Cartão" id="debit-card-name">
+                          <input type="text" placeholder="Número do Cartão" id="debit-card-number" maxlength="16">
+                          <input type="text" placeholder="Validade (MM/AA)" id="debit-card-expiry" maxlength="5">
+                          <input type="text" placeholder="CVV" id="debit-card-cvv" maxlength="3">
+                      </div>
+                  </div>
+
+                    <div class="payment-method">
+                        <label>
+                            <input type="radio" name="payment" value="boleto">
+                            <img src="img/boleto-logo-9532211C9E-seeklogo.com.png" alt="Boleto"> Boleto Bancário
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
     <!-- Rodapé -->
-    <footer class="footer">
-        <p>&copy; 2024 OnStage. Todos os direitos reservados.</p>
-    </footer>
+    <footer>
+      <div class="container">
+        <div class="column">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="#">Filmes</a></li>
+            <li><a href="#">Musicais</a></li>
+            <li><a href="#">Peças teatrais</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="#">Quem Somos</a></li>
+            <li><a href="#">Assessoria de Imprensa</a></li>
+            <li><a href="#">Vale-Presente Corporativo</a></li>
+            <li><a href="#">Faça parte do time</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h4>Políticas</h4>
+          <ul>
+            <li><a href="#">Privacidade e Segurança</a></li>
+            <li><a href="#">Trocas e Cancelamentos</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+          </ul>
+        </div>
+        <div class="column">
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="column payment-methods">
+          <h4>Formas de Pagamento</h4>
+          <div>
+            <img src="img/visa.jpg" alt="Visa">
+            <img src="img/mastercard.jpg" alt="Mastercard">
+            <img src="img/nubank.jpg" alt="Nubank">
+            <!-- Adicione mais ícones conforme necessário -->
+          </div>
+        </div>
+        <div class="column awards">
+          <h4>Selo do Consumidor</h4>
+          <img src="img/reclame aqui.png" alt="Reclame Aqui">
+          <img src="img/premio.png" alt="Prêmio Melhor App">
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+          OnStage Ltda / CNPJ: 00.000.000/0001-00 Endereço: Rua Dois de Fevereiro, 85 - 5º andar - Engenho de Dentro - RJ - 20000-000<br>
+          Atendimento ao cliente © 2024 - Copyright OnStage.com - Todos os direitos reservados.
+      </div>
+    
+    <script>
+        // Javascript para alternar visibilidade dos campos do cartão
+        document.getElementById("credit-card-toggle").addEventListener("click", function() {
+            var cardDetails = document.getElementById("card-details");
+            if (cardDetails.style.display === "none" || cardDetails.style.display === "") {
+                cardDetails.style.display = "block";
+                this.innerHTML = "Clique aqui para ocultar o cartão de crédito";
+            } else {
+                cardDetails.style.display = "none";
+                this.innerHTML = "Clique aqui para preencher o cartão de crédito";
+            }
+        });
+    </script>
+
 </body>
 </html>

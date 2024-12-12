@@ -1,0 +1,402 @@
+body {
+    font-family: 'Poppins', sans-serif; 
+    padding-bottom: 80px;
+  }*
+  
+  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background: #ffffff;
+  }
+  
+  /* Cabeçalho */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  
+  .menu-button:hover {
+    background-color: #30d5c8;
+    transform: scale(1.1);
+  }
+  
+  .logo {
+    height: 60px;
+    max-width: 100%;
+    margin: 0 0;
+    vertical-align: middle;
+  }
+  
+  .search-bar input {
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #30d5c8;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  
+  
+  /* Estilo geral do botão */
+  .theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #3f51b5;
+    color: #ffa500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+  }
+  
+  /* Hover e clique no botão */
+  .theme-toggle:hover {
+    background-color: #30d5c8;
+    transform: scale(1.0);
+  
+  }
+  .theme-toggle:active {
+    transform: scale(1.5);
+  }
+  /* Tema escuro */
+  body.dark-theme {
+    background-color: #121212;
+    color: #000000;
+  }
+  
+  /* Adicionando margem inferior aos botões de horário de sessão */
+  .times button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 20px; /* Espaçamento entre os botões */
+    margin-bottom: 20px; /* Adiciona espaço abaixo dos botões de sessão */
+  }
+  
+  
+  /* Estilo do botão no tema escuro */
+  body.dark-theme .theme-toggle {
+    background-color: #333333;
+    color: #f0e68c; /* cor da lua */
+  }
+  
+  /* Temas */
+  body.white-theme {
+    background-color: #f5f5f5;
+    color: #000;
+  }
+  
+  .header.white-theme {
+    background-color: #ffffff;
+    color: #000;
+  }
+  
+  body.white-theme .theme-button {
+    background-color: #009688;
+    color: #ffffff;
+    border: 1px solid #00796b;
+  }
+  
+  body.black-theme {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .header.black-theme {
+    background-color: #333;
+    color: #ffffff;
+  }
+  
+  body.black-theme .theme-button {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border: 1px solid #333;
+  }
+  #auth-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Geral */
+  #auth-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Forçando a largura com !important */
+  button.auth-btn {
+    width: auto !important; /* Força o estilo a ser aplicado */
+    max-width: 250px !important; /* Força a largura máxima */
+  }
+  
+  .auth-btn {
+    background-color: #30d5c8;
+    color: white;
+    border: none;
+    padding: 10px 20px;  /* Diminuímos o padding para torná-lo mais compacto */
+    border-radius: 5px;   /* Mantivemos o border-radius para bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    width: auto; /* Ajuste de largura para se adequar ao conteúdo */
+    max-width: 200px; /* Limita a largura máxima para evitar que o botão fique muito largo */
+    display: inline-block; /* Para garantir que o botão se ajuste ao conteúdo */
+  }
+  
+  /* Hover */
+  .auth-btn:hover {
+    background-color: #30b1b2;
+    transform: scale(1.05);
+  }
+  
+  /* Clique */
+  .auth-btn:active {
+    transform: scale(0.95);
+  }
+  
+  button {
+    background-color: #fff;
+    color: #000;
+    background-color: #30b1b2;
+    color: white;
+    width: 150;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    margin-left: 20px; /* Aumente esse valor para mover mais para a direita */
+    border-radius: 5px;
+  }
+
+  #sinopse-conteudo {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 30px;
+    margin-bottom: 20px;
+  }
+
+
+  /* Botão de Cadastro/Login */
+  .auth-btn {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .auth-btn:hover {
+    background-color: #30d5c8;
+  }
+  
+  /* Botão de Perfil */
+  .profile-container {
+    position: relative;
+    margin: left 100000px;  /* Isso empurra o botão para a direita */
+    margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
+  }
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 900px;
+  }
+  
+  .profile-btn:hover {
+    background-color: #30d5c8;
+   
+  }
+  
+  .profile-name {
+    margin-left: 10px;
+    font-size: 14px;
+   
+  }
+  
+  /* Menu Dropdown */
+  .profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: none;
+    z-index: 10;
+   
+  }
+  
+  .profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .profile-dropdown li {
+    padding: 10px 20px;
+  }
+  
+  .profile-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+  }
+  
+  .profile-dropdown li a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  /* Mostrar dropdown ao passar o mouse */
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+  
+  
+  .movie-info {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .poster {
+    width: 200px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .sessions {
+    padding: 20px;
+  }
+  
+  .filters button, .times button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .filters button:hover, .times button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ícone do botão */
+  .theme-toggle .icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Garante que o footer fique no final mesmo com pouco conteúdo */
+  html, body {
+    height: 100%; /* Ocupa 100% da altura da janela */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Layout em coluna */
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  footer {
+    background-color: #121212;
+    padding: 40px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border: none;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .column {
+    flex: 1;
+    min-width: 200px;
+  }
+  .column h4 {
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .column ul li {
+    margin-bottom: 5px;
+  }
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .payment-methods img, .awards img {
+    width: 50px; /* Largura fixa */
+    height: 30px; /* Altura fixa */
+    object-fit: contain; /* Ajusta o conteúdo sem distorção */
+  }
+  .awards {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .awards img {
+    max-height: 50px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+    max-width: 800px;
+    margin: 20px auto; /* Centraliza horizontalmente */
+    line-height: 1.5;
+  }

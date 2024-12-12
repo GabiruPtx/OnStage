@@ -7,18 +7,22 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import ufrrj.aps.onstage.dao.clienteDAO;
 import ufrrj.aps.onstage.model.cliente;
 
 @WebServlet("/CadastroServlet")
 public class CadastroServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
     public CadastroServlet() {
 
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect("cadastro.html");
 
     }
 
@@ -52,7 +56,10 @@ public class CadastroServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(0);
+        session.setAttribute("cliente", cliente);
         response.sendRedirect(request.getContextPath() + "/index.html");
     
     }

@@ -1,0 +1,354 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fixação do cabeçalho */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: #333;
+}
+
+/* Logo */
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    max-width: 200px;
+}
+
+/* Contêiner de autenticação e perfil */
+#auth-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 0; /* Certifique-se de que o botão de autenticação esteja alinhado à esquerda */
+}
+
+/* Botão de Cadastro */
+#auth-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-right: 20px; /* Ajusta o espaçamento à direita se necessário */
+}
+
+#auth-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de Perfil */
+.profile-container {
+    position: relative;
+    margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
+  }
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 600px;
+  }
+  
+  .profile-btn:hover {
+    background-color: #30d5c8;
+  }
+  
+  .profile-name {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  /* Menu Dropdown */
+  .profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: none;
+    z-index: 10;
+  }
+  
+  .profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .profile-dropdown li {
+    padding: 10px 20px;
+  }
+  
+  .profile-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+  }
+  
+  .profile-dropdown li a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  /* Mostrar dropdown ao passar o mouse */
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+
+/* Botão de alternância de tema */
+#theme-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+#theme-toggle:hover {
+    color: #007bff;
+}
+
+/* Layout Principal */
+.main-content {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo principal */
+    gap: 300px; /* Espaçamento entre colunas */
+    margin-top: 120px; /* Espaço para o cabeçalho fixo */
+}
+
+.ticket-options {
+    flex: 1; /* Faz com que a seção de tickets ocupe o mesmo espaço */
+    max-width: 500px; /* Define um limite para a largura */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ticket {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.ticket-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: -300px;
+}
+
+.ticket-label p {
+    margin: 0;
+    font-size: 16px;
+    margin-right: 300px;
+    width: 300px;
+    height: -10px;
+    font-weight: bold;
+    color: white;
+}
+
+.ticket-label span {
+    font-size: 14px;
+    color: #bbb;
+    margin-top: 5px;
+}
+
+.ticket-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: -300px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #444;
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
+.quantity-btn {
+    background-color: #30d5c8;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #1e1e1e;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #30d5c8;
+}
+
+/* Resumo do pedido */
+.order-summary {
+    flex: 1; /* Faz com que o resumo também ocupe o mesmo espaço */
+    width: 400px; /* Define um limite para a largura */
+    max-height: 360px;
+    margin-right: 200px;
+    background-color: #333;
+    padding: 13px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column; /* Garante que os itens fiquem um abaixo do outro */
+  margin-bottom: 50px;
+  
+}
+
+.movie-image {
+    width: 100px;
+    height: 150px;
+    margin-right: 15px;
+}
+
+.movie-details {
+    color: #bbb;
+}
+
+.classificacao {
+    font-weight: bold;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.payment button, .back-button button {
+    background-color: #30d5c8;
+    border: none;
+    padding: 10px 20px;
+    color: #1e1e1e;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.payment button:hover, .back-button button:hover {
+    background-color: #e09500;
+}
+
+.back-button {
+    margin-bottom: 30px; /* Espaçamento abaixo */
+    margin-top: 10px; /* Espaçamento acima */
+    margin-left: 0px; /* Ajusta alinhamento para seguir os itens */
+    text-align: center; /* Garante centralização */
+    width: fit-content; /* Ajusta o tamanho ao conteúdo */
+}
+
+footer {
+    background-color: #121212;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border: none;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .column {
+    flex: 1;
+    min-width: 200px;
+  }
+  .column h4 {
+    margin-bottom: 10px;
+  }
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .column ul li {
+    margin-bottom: 5px;
+  }
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .payment-methods img, .awards img {
+    width: 50px; /* Largura fixa */
+    height: 30px; /* Altura fixa */
+    object-fit: contain; /* Ajusta o conteúdo sem distorção */
+  }
+  .awards {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .awards img {
+    max-height: 50px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+    max-width: 800px;
+    margin: 20px auto; /* Centraliza horizontalmente */
+    line-height: 1.5;
+  }

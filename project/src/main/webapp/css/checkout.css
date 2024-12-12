@@ -1,248 +1,371 @@
-/* Reset básico */
+/* Geral */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Cabeçalho */
+header {
+  background-color: #111;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo-container img {
-    max-height: 50px;
+.header .logo-container a {
+  text-decoration: none;
 }
 
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: inherit;
+.logo {
+  width: 200px;
 }
 
-.page-title {
-    text-align: center;
-    font-size: 2rem;
-    margin: 20px 0;
+#auth-container {
+  display: flex;
+  align-items: center;
 }
 
-.selected-seats, .payment-options {
-    margin: 20px auto;
-    width: 80%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.auth-btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-h2 {
-    margin-bottom: 15px;
+#theme-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-#seat-list {
-    list-style: none;
-    padding: 0;
+/* Conteúdo Principal */
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 20px;
+  gap: 20px;
 }
 
-#seat-list li {
-    margin-bottom: 5px;
-    font-weight: bold;
+.payment-left {
+  width: 60%;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.card-details input {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.payment-left h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.movie-info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.movie-info img {
+  width: 100px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-details h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.movie-details p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.price-summary {
+  margin-top: 20px;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 .submit-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.submit-button:hover {
-    background-color: #0056b3;
+.payment-right {
+  width: 35%;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #000;
-    color: white;
+.payment-right h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-/* Tema escuro */
+.payment-method {
+  margin-bottom: 15px;
+}
+
+.payment-method label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.payment-method input[type="radio"] {
+  margin-right: 10px;
+}
+
+.payment-method img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.card-details {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.card-details input {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+.pix-instructions {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #aaa;
+}
+
+#pix-code {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #007bff;
+}
+
+.payment-method input:checked + img {
+  border: 2px solid #007bff;
+  border-radius: 5px;
+}
+
+/* Rodapé */
+footer {
+  background-color: #0f0f0f;
+  padding: 40px 20px;
+  width: 100%;
+  border: none;
+  margin-top: auto;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.column h4 {
+  margin-bottom: 10px;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.column ul li {
+  margin-bottom: 5px;
+}
+
+.column ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.payment-methods img, .awards img {
+  width: 50px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.awards {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  color: #888;
+  max-width: 800px;
+  margin: 20px auto;
+  line-height: 1.5;
+}
+
+/* Botão de Cartão de Crédito */
+.credit-card-toggle {
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  margin-top: 10px;
+}
+
+/* Botão de Cartão de Débito */
+.debit-card-toggle {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  margin-top: 10px;
+}
+
+/* Efeitos nos Botões */
+.credit-card-toggle:hover, .debit-card-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.credit-card-toggle:focus, .debit-card-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.credit-card-toggle:active, .debit-card-toggle:active {
+  transform: translateY(2px);
+}
+
+/* Efeito de Hover para o Cartão de Débito */
+.debit-card-toggle:hover {
+  background-color: #0056b3;
+}
+
+/* Efeito de Hover para o Cartão de Crédito */
+.credit-card-toggle:hover {
+  background-color: #218838;
+}
+
+
+/* Tema Claro */
+/* Tema Claro */
+body.light-theme {
+  background-color: #fff !important; /* Garantir que a cor de fundo seja aplicada */
+  color: #333 !important; /* Cor de texto escura */
+}
+
+header.light-theme {
+  background-color: #fff !important; /* Cabeçalho branco */
+  color: #333 !important; /* Texto escuro no cabeçalho */
+}
+
+
+.submit-button.light-theme {
+  background-color: #28a745;
+}
+
+.payment-left.light-theme, .payment-right.light-theme {
+  background-color: #fff;
+  color: #333;
+}
+
+.payment-method input:checked + img.light-theme {
+  border: 2px solid #28a745;
+}
+
+footer.light-theme {
+  background-color: #f8f8f8;
+  color: #cfcdcd;
+}
+
+/* Tema Escuro */
 body.dark-theme {
-    background-color: #121212;
-    color: #f1f1f1;
+  background-color: #1e1e1e;
+  color: #fff;
 }
 
-body.dark-theme .header {
-    background-color: #333;
+header.dark-theme {
+  background-color: #111;
 }
 
-body.dark-theme .selected-seats, 
-body.dark-theme .payment-options {
-    background-color: #333;
-    color: #f1f1f1;
-}
-/* Centralização da seção "Tipo de Ingresso" */
-.ticket-type {
-    background-color: #f9f9f9; /* Fundo claro */
-    border: 1px solid #ddd; /* Borda sutil */
-    border-radius: 8px; /* Cantos arredondados */
-    padding: 20px; /* Espaçamento interno */
-    margin: 20px auto; /* Centralização horizontal */
-    width: 80%; /* Largura adaptável */
-   
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para mudanças no tema */
-    display: flex; /* Garantir que o conteúdo ocupe o espaço corretamente */
-    flex-direction: column; /* Colocar conteúdo de forma vertical */
-    align-items: flex-start; /* Alinhar itens à esquerda */
-    justify-content: flex-start; /* Alinhar itens no início */
+.submit-button.dark-theme {
+  background-color: #007bff;
 }
 
-
-
-#cpf-container input {
-    width: 100%; /* Largura total */
-    height: 100%;
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda do campo */
-    border-radius: 4px; /* Cantos arredondados */
-    font-size: 1rem; /* Tamanho do texto */
-    color: #333; /* Cor do texto */
+.payment-left.dark-theme, .payment-right.dark-theme {
+  background-color: #2a2a2a;
 }
 
-#cpf-container input::placeholder {
-    color: #aaa; /* Cor do placeholder */
+.payment-method input:checked + img.dark-theme {
+  border: 2px solid #007bff;
 }
 
-/* Modo escuro */
-body.dark-theme .ticket-type {
-    background-color: #333; /* Fundo escuro */
-    border-color: #444; /* Borda mais escura */
+footer.dark-theme {
+  background-color: #121212;
+  color: #fff;
 }
-
-body.dark-theme .ticket-type h2,
-body.dark-theme .ticket-type label {
-    color: #f1ebeb; /* Texto claro */
-}
-
-body.dark-theme #cpf-container input {
-    background-color: #555; /* Fundo do input escuro */
-    border-color: #666; /* Borda escura */
-    color: #fff; /* Texto claro */
-}
-
-body.dark-theme #cpf-container input::placeholder {
-    color: #faf7f7; /* Cor do placeholder claro */
-}
-.profile-container {
-    position: relative;
-    margin-right: auto; /* Adiciona um pequeno espaço à direita do botão */
-  }
-  .profile-btn {
-    display: flex;
-    align-items: center;
-    background-color: #3f51b5;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    margin-left: 900px;
-  }
-  
-  .profile-btn:hover {
-    background-color: #30d5c8;
-  }
-  
-  .profile-name {
-    margin-left: 10px;
-    font-size: 14px;
-  }
-  
-  /* Menu Dropdown */
-  .profile-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    display: none;
-    z-index: 10;
-  }
-  
-  .profile-dropdown ul {
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
-  }
-  
-  .profile-dropdown li {
-    padding: 10px 20px;
-  }
-  
-  .profile-dropdown li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    display: block;
-  }
-  
-  .profile-dropdown li a:hover {
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
-  
-  /* Mostrar dropdown ao passar o mouse */
-  .profile-container:hover .profile-dropdown {
-    display: block;
-  }
-  
-  /* Restante do código sem alteração */
-  
-  #theme-toggle {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-  
-  #theme-toggle:hover {
-    transform: scale(1.1);
-  }
-  

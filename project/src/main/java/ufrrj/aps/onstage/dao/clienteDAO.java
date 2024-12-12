@@ -44,7 +44,7 @@ public class clienteDAO {
             
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
-                    cliente.setId(rs.getLong(1));
+                    cliente.setId(rs.getInt(1));
                     if (cliente.getEndereco() != null) {
                         cliente.getEndereco().setIdCliente(cliente.getId());
                         enderecoDAO.inserir(cliente.getEndereco(), conn);
@@ -73,11 +73,50 @@ public class clienteDAO {
         }
     }
 
+    public cliente buscarPorEmailSenha(String email, String senha) throws SQLException {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        cliente cliente = null;
+    
+        try {
+            conn = DBConnection.getConection();
+            
+            String sql = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+            
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            
+            rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                cliente = extrairCliente(rs);
+            }
+            
+            return cliente;
+            
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar cliente: " + e.getMessage());
+            throw new SQLException("Erro ao buscar cliente por email e senha: " + e.getMessage());
+        } finally {
+            if (rs != null) {
+                try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+            if (stmt != null) {
+                try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+            if (conn != null) {
+                try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+        }
+    }
+
     // Extrai os dados de um cliente do ResultSet
     private cliente extrairCliente(ResultSet rs) throws SQLException {
         cliente cliente = new cliente();
 
-        cliente.setId(rs.getLong("id"));
+        cliente.setId(rs.getInt("id_cliente"));
         cliente.setNome(rs.getString("nome"));
         cliente.setSobrenome(rs.getString("sobrenome"));
         cliente.setEmail(rs.getString("email"));
@@ -87,8 +126,7 @@ public class clienteDAO {
         cliente.setData_nasc(rs.getString("data_nasc"));
         
         // Busca o endereço associado ao cliente
-        enderecoDAO enderecoDAO = new enderecoDAO(); // Instância do DAO de endereço
-        endereco endereco = enderecoDAO.buscarPorClienteId(cliente.getId()); // Busca pelo ID do cliente
+        endereco endereco = this.enderecoDAO.buscarPorClienteId(cliente.getId()); // Busca pelo ID do cliente
         cliente.setEndereco(endereco); // Associa o endereço ao cliente
 
         return cliente;

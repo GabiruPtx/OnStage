@@ -1,27 +1,49 @@
-// Função para obter os parâmetros da URL
-function getQueryParams() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-        nome: params.get('nome') || "Nome do filme não encontrado",
-        imagem: params.get('imagem') || "img/default-poster.jpg",
-        sinopse: params.get('sinopse') || "Sinopse não disponível",
-        genero: params.get('genero') || "Gênero não especificado",
-        duracao: params.get('duracao') || "Duração não especificada"
-    };
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".filter-button");
+  const cinemaDays = document.querySelectorAll(".cinema-day");
 
-// Renderizar as informações do filme na página
-function renderizarFilme() {
-    const { nome, imagem, sinopse, genero, duracao } = getQueryParams();
+  buttons.forEach(button => {
+      button.addEventListener("click", () => {
+          const date = button.getAttribute("data-date");
 
-    // Atualizar os elementos da página
-    document.getElementById('filme-nome').textContent = nome;
-    document.getElementById('filme-poster').src = imagem;
-    document.getElementById('filme-poster').alt = `Poster do filme ${nome}`;
-    document.getElementById('filme-descricao').textContent = sinopse;
-    document.getElementById('filme-genero').textContent = genero;
-    document.getElementById('filme-duracao').textContent = `Duração: ${duracao}`;
-}
+          // Ocultar todas as sessões
+          cinemaDays.forEach(day => day.style.display = "none");
 
-// Inicializar ao carregar
-document.addEventListener('DOMContentLoaded', renderizarFilme);
+          // Mostrar apenas as sessões correspondentes
+          const activeDay = document.querySelector(`.cinema-day[data-date="${date}"]`);
+          if (activeDay) {
+              activeDay.style.display = "block";
+          }
+      });
+  });
+});
+
+document.getElementById("toggle-sobre").addEventListener("click", function() {
+  const sinopseConteudo = document.getElementById("sinopse-conteudo");
+  if (sinopseConteudo.style.display === "none" || sinopseConteudo.style.display === "") {
+      sinopseConteudo.style.display = "block"; // Exibe a aba
+  } else {
+      sinopseConteudo.style.display = "none"; // Esconde a aba
+  }
+});
+
+// Alterna entre os temas (escuro e claro)
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  // Alterna as classes de tema
+  const isDarkTheme = document.body.classList.toggle('black-theme');
+  document.body.classList.toggle('white-theme', !isDarkTheme);
+
+  // Alterar o ícone do botão conforme o tema
+  let icon = document.querySelector(".theme-toggle .icon");
+  if (isDarkTheme) {
+    icon.innerText = "🌙"; // Lua para tema escuro
+  } else {
+    icon.innerText = "☀️"; // Sol para tema claro
+  }
+
+  // Atualizar a logo com base no tema
+  const logo = document.querySelector('.logo');
+  logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
+});
+
+

@@ -6,124 +6,204 @@
     <title>Detalhes do Filme - Wicked</title>
     <link rel="stylesheet" href="css/sessoescinemas.css">
     <script src="js/sessoescinemas.js" defer></script>
+
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
-            </a>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar eventos...">
-        </div>
-        <button class="auth-btn">Cadastrar/Login</button>
+     <!-- Cabeçalho -->
+     <header class="header">
+      <div class="logo-container">
+        <a href="index.html">
+            <img src="img/OS_Logotipo_Black.png" alt="Logo" class="logo">
+        </a>
+    </div>
+        
+        <div id="auth-container">
+        
+            <button id="auth-btn" class="auth-btn">Cadastro / Login</button>
+            <!-- Botão de Perfil e Menu -->
+            <div id="profile-container" class="profile-container" style="display: none;">
+              <button class="profile-btn">
+                GG
+                <span class="profile-name">Gabriel Garcia</span>
+              </button>
+              <div class="profile-dropdown">
+                <ul>
+                  <li><a href="perfil.html">Minha Conta</a></li>
+                  <li><a href="#">Central de Ajuda</a></li>
+                  <li><a href="#" id="logout-btn">Sair</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+            <span class="icon">☀️</span>
+        </button>
     </header>
 
-    <!-- Corpo principal -->
-    <main class="filme-detalhes">
-        <!-- Detalhes do filme -->
-        <section class="filme-header">
-            <img src="img/wicked-posterportrait.webp" alt="Wicked Poster" class="poster">
-            <div class="filme-info">
-                <h1>Wicked</h1>
-                <p class="genero">Ação, Aventura, Fantasia, Musical</p>
-                <p class="duracao">Duração: 2h41</p>
-                         </div>
-        </section>
-
-        <!-- Abas de Navegação -->
-        <nav class="abas-navegacao">
-            <button class="aba ativa" data-aba="sessoes">Sessões</button>
-            <button class="aba" data-aba="sobre">Sobre o filme</button>
-        </nav>
-
-        <!-- Conteúdo das Abas -->
-        <div class="conteudo-aba ativo" id="sessoes">
-            <!-- Seleção de datas -->
-            <section class="datas">
-                <h2>Selecione uma data</h2>
-                <div class="datas-lista">
-                    <button class="data" data-date="2024-12-08">DOM</button>
-                    <button class="data" data-date="2024-12-09">SEG</button>
-                    <button class="data" data-date="2024-12-10">TER</button>
-                    <button class="data" data-date="2024-12-11">QUA</button>
-                    <button class="data" data-date="2024-12-12">QUI</button>
-                    <button class="data" data-date="2024-12-13">SEX</button>
-                    <button class="data" data-date="2024-12-14">SAB</button>
-                </div>
-            </section>
-
-            <!-- Cinemas e Horários -->
-            <section class="cinemas">
-                <h3>Cinemas disponíveis:</h3>
-                <div class="cinema" id="cinema1">
-                    <h4>Kinoplex Nova América</h4>
-                    <p><strong>Horários:</strong> 15:00 | 18:30 | 21:00</p>
-                </div>
-                <div class="cinema" id="cinema2">
-                    <h4>UCI Kinoplex Norte Shopping</h4>
-                    <p><strong>Horários:</strong> 14:30 | 17:45 | 20:00</p>
-                </div>
-                <div class="cinema" id="cinema3">
-                    <h4>Cinesercla Nilópolis Square</h4>
-                    <p><strong>Horários:</strong> 16:00 | 19:15 | 22:00</p>
-                </div>
-            </section>
+    </header>
+    <section class="movie-info">
+        <img src="img/guldcsha8aivddc.jpg" alt="Moana 2" class="poster">
+        <div class="details">
+          <h1>Moana 2</h1>
+          <p>1h40 | Animação</p>
+          <p class="synopsis">Após receber um chamado inesperado...</p>
+          
         </div>
+      </section>
 
-        <!-- Aba "Sobre o Filme" -->
-        <div class="conteudo-aba" id="sobre">
-                        <!-- Conteúdo do "Sobre o Filme" (inicialmente escondido) -->
-            <div id="sinopse-conteudo" style="display: none;">
-                <h2>Sobre o filme</h2>
-                <p>Wicked é uma adaptação cinematográfica do famoso musical da Broadway, que explora a amizade improvável entre duas jovens bruxas: Elphaba, com pele verde e uma personalidade feroz, e Glinda, charmosa e popular. A história acontece antes da chegada de Dorothy à terra de Oz, revelando os eventos que moldaram o mundo mágico.</p>
+<!-- Botão para exibir a aba "Sobre o Filme" -->
+<button id="toggle-sobre">Sobre o Filme</button>
 
-                <!-- Ficha Técnica -->
-                <section class="ficha-tecnica">
-                    <h3>Ficha Técnica:</h3>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">Nome Original:</span> Wicked
-                    </div>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">Direção:</span> John M. Chu
-                    </div>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">Gênero:</span> Ação, Aventura, Fantasia, Musical
-                    </div>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">Distribuidor:</span> Universal Pictures Brasil
-                    </div>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">Duração:</span> 161 min
-                    </div>
-                    <div class="ficha-item">
-                        <span class="ficha-titulo">País de Origem:</span> <img src="img/usa-flag.png" alt="EUA" class="flag">
-                    </div>
-                </section>
-            </div>
+
+      <!-- Aba "Sobre o Filme" -->
+      <div class="conteudo-aba" id="sobre">
+        <!-- Conteúdo do "Sobre o Filme" (inicialmente escondido) -->
+<div id="sinopse-conteudo" style="display: none;">
+<h2>Sobre o filme</h2>
+<p>Wicked é uma adaptação cinematográfica do famoso musical da Broadway, que explora a amizade improvável entre duas jovens bruxas: Elphaba, com pele verde e uma personalidade feroz, e Glinda, charmosa e popular. A história acontece antes da chegada de Dorothy à terra de Oz, revelando os eventos que moldaram o mundo mágico.</p>
+
+<!-- Ficha Técnica -->
+<section class="ficha-tecnica">
+    <h3>Ficha Técnica:</h3>
+    <div class="ficha-item">
+        <span class="ficha-titulo">Nome Original:</span> Wicked
+    </div>
+    <div class="ficha-item">
+        <span class="ficha-titulo">Direção:</span> John M. Chu
+    </div>
+    <div class="ficha-item">
+        <span class="ficha-titulo">Gênero:</span> Ação, Aventura, Fantasia, Musical
+    </div>
+    <div class="ficha-item">
+        <span class="ficha-titulo">Distribuidor:</span> Universal Pictures Brasil
+    </div>
+    <div class="ficha-item">
+        <span class="ficha-titulo">Duração:</span> 161 min
+    </div>
+    <div class="ficha-item">
+        <span class="ficha-titulo">País de Origem:</span> <img src="img/usa-flag.png" alt="EUA" class="flag">
+    </div>
+</section>
+</div>
+</div>
+      <section class="sessions">
+        <h2>Sessões</h2>
+        <div class="filters">
+          <button>SEG</button>
+          <button>SEX</button>
         </div>
-    </main>
+        <div class="cinemas">
+          <h3>Cine Araújo Jardim Guadalupe</h3>
+          <div class="times">
+            <a href="assentos.html">
+              <button>14:40</button>
+            </a>
+            <a href="assentos.html">
+              <button>16:50</button>
+            </a>
+            <a href="assentos.html">
+              <button>19:00</button>
+            </a>
+          </div>
+          <h3>Kinoplex Nova América</h3>
+          <div class="times">
+            <a href="assentos.html">
+              <button>15:00</button>
+            </a>
+            <a href="assentos.html">
+              <button>17:30</button>
+            </a>
+            <a href="assentos.html">
+              <button>21:00</button>
+            </a>
+          </div>
+          <h3>UCI Kinoplex Norte Shopping</h3>
+          <div class="times">
+            <a href="assentos.html">
+              <button>13:30</button>
+            </a>
+            <a href="assentos.html">
+              <button>18:20</button>
+            </a>
+            <a href="assentos.html">
+              <button>23:00</button>
+            </a>
+          </div>
+        </div>
+        
+        </div>
+        
+        </div>
+      </section>
 
+
+</main>
+
+    
     <!-- Rodapé -->
-    <footer class="footer">
-        <p>&copy; 2024 OnStage. Todos os direitos reservados.</p>
-    </footer>
+  <footer>
+    <div class="container">
+      <div class="column">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">Filmes</a></li>
+          <li><a href="#">Musicais</a></li>
+          <li><a href="#">Peças teatrais</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Quem Somos</a></li>
+          <li><a href="#">Assessoria de Imprensa</a></li>
+          <li><a href="#">Vale-Presente Corporativo</a></li>
+          <li><a href="#">Faça parte do time</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#">Privacidade e Segurança</a></li>
+          <li><a href="#">Trocas e Cancelamentos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Redes Sociais</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
 
-    <script>
-        // Manipulação do botão já existente para exibir/ocultar informações
-        const botaoSobre = document.querySelector('.aba[data-aba="sobre"]');  // Seleciona o botão "Sobre o filme"
-        const sinopseConteudo = document.getElementById("sinopse-conteudo");
+    <div class="container">
+      <div class="column payment-methods">
+        <h4>Formas de Pagamento</h4>
+        <div>
+          <img src="img/visa.jpg" alt="Visa">
+          <img src="img/mastercard.jpg" alt="Mastercard">
+          <img src="img/nubank.jpg" alt="Nubank">
+          <!-- Adicione mais ícones conforme necessário -->
+        </div>
+      </div>
+      <div class="column awards">
+        <h4>Selo do Consumidor</h4>
+        <img src="img/reclame aqui.png" alt="Reclame Aqui">
+        <img src="img/premio.png" alt="Prêmio Melhor App">
+      </div>
+    </div>
 
-        // Evento para alternar a visibilidade do conteúdo
-        botaoSobre.addEventListener("click", function() {
-            if (sinopseConteudo.style.display === "none" || sinopseConteudo.style.display === "") {
-                sinopseConteudo.style.display = "block";  // Exibe o conteúdo
-            } else {
-                sinopseConteudo.style.display = "none";  // Oculta o conteúdo
-            }
-        });
-    </script>
+    <div class="footer-bottom">
+        OnStage Ltda / CNPJ: 00.000.000/0001-00 Endereço: Rua Dois de Fevereiro, 85 - 5º andar - Engenho de Dentro - RJ - 20000-000<br>
+        Atendimento ao cliente © 2024 - Copyright OnStage.com - Todos os direitos reservados.
+    </div>
+  </footer>
+</body>
+</html>
 </body>
 </html>

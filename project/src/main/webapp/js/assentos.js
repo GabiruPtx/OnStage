@@ -8,13 +8,30 @@ document.addEventListener("DOMContentLoaded", () => {
         seat.addEventListener("click", () => {
             if (!seat.classList.contains("reserved")) {
                 seat.classList.toggle("selected");
-                const seatNumber = seat.textContent;
                 
-                // Adiciona ou remove o assento da lista
-                if (seat.classList.contains("selected")) {
-                    selectedSeats.push(seatNumber);
+                // Capturar todos os atributos do assento de forma segura
+                const assentoData = {
+                    id: seat.getAttribute("data-seat-id") || '',
+                    sala: seat.getAttribute("data-sala-id") || '',
+                    fileira: seat.getAttribute("data-fileira") || '',
+                    numero: seat.getAttribute("data-numero") || '',
+                    tipo: seat.getAttribute("data-tipo") || '',
+                    estado: seat.classList.contains("selected") ? "SELECIONADO" : (seat.getAttribute("data-estado") || 'DISPONIVEL')
+                };
+                
+                // Verificação de dados antes de adicionar
+                if (assentoData.fileira && assentoData.numero) {
+                    if (seat.classList.contains("selected")) {
+                        selectedSeats.push(assentoData);
+                        console.log("Assento adicionado:", assentoData);
+                    } else {
+                        selectedSeats = selectedSeats.filter(item => item.id !== assentoData.id);
+                        console.log("Assento removido:", assentoData.id);
+                    }
+                    
+                    console.log("Lista atual de assentos:", selectedSeats);
                 } else {
-                    selectedSeats = selectedSeats.filter(item => item !== seatNumber);
+                    console.error("Dados do assento incompletos:", assentoData);
                 }
             }
         });
@@ -23,85 +40,56 @@ document.addEventListener("DOMContentLoaded", () => {
     // Função de confirmação de seleção de assentos
     confirmBtn.addEventListener("click", () => {
         if (selectedSeats.length > 0) {
-            // Armazena os assentos no localStorage
-            localStorage.setItem("selectedSeats", JSON.stringify(selectedSeats));
-            window.location.href = "checkout.html"; // Redireciona para a página de checkout
+            // Debug antes de enviar
+            console.log("Enviando assentos:", selectedSeats);
+            
+            // Criar um formulário dinamicamente
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'Assento';
+
+            // Adicionar os assentos selecionados como campos hidden
+            const assentosInput = document.createElement('input');
+            assentosInput.type = 'hidden';
+            assentosInput.name = 'assentosSelecionados'; // Mudando o nome para corresponder ao servlet
+            assentosInput.value = JSON.stringify(selectedSeats);
+            form.appendChild(assentosInput);
+
+            // Adicionar o ID da sessão
+            const sessaoId = document.getElementById('sessao-id').value;
+            const sessaoInput = document.createElement('input');
+            sessaoInput.type = 'hidden';
+            sessaoInput.name = 'sessaoId';
+            sessaoInput.value = sessaoId;
+            form.appendChild(sessaoInput);
+
+            // Debug do formulário antes de enviar
+            console.log("Dados do formulário:", {
+                sessaoId: sessaoId,
+                assentos: assentosInput.value
+            });
+
+            // Adicionar o formulário ao documento e enviá-lo
+            document.body.appendChild(form);
+            form.submit();
         } else {
             alert("Selecione pelo menos um assento!");
         }
     });
 });
-document.addEventListener('DOMContentLoaded', function () {
-    console.log("Script carregado com sucesso!");// Verifica se o usuário está logado
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+// Alterna entre os temas (escuro e claro)
+document.getElementById('theme-toggle').addEventListener('click', function () {
+    const isDarkTheme = document.body.classList.toggle('black-theme');
+    document.body.classList.toggle('white-theme', !isDarkTheme);
   
-    const authButton = document.getElementById('auth-btn'); // Botão de login/cadastro
-    const profileMenu = document.getElementById('profile-container'); // Menu de perfil
-    const profileName = document.getElementById('profile-name'); // Nome no perfil
-    const profileDropdown = document.getElementById('profile-dropdown'); // Dropdown de perfil
-  
-    if (isLoggedIn === 'true') {
-      // Esconde o botão de login/cadastro
-      if (authButton) authButton.style.display = 'none';
-  
-      // Mostra o menu de perfil
-      if (profileMenu) profileMenu.style.display = 'flex';
-  
-      // Opcional: Atualiza o nome no menu de perfil com o email do usuário
-      const userEmail = localStorage.getItem('userEmail');
-      if (profileName && userEmail) {
-        profileName.textContent = userEmail.split('@')[0]; // Exibe apenas o nome do email
-      }
+    let icon = document.querySelector(".theme-toggle .icon");
+    if (isDarkTheme) {
+        icon.innerText = "🌙";
     } else {
-      // Mostra o botão de login/cadastro se não estiver logado
-      if (authButton) authButton.style.display = 'block';
-      if (profileMenu) profileMenu.style.display = 'none';
+        icon.innerText = "☀️";
     }
   
-    // Adiciona funcionalidade de logout
-    const logoutButton = document.getElementById('logout-btn');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', function () {
-        // Limpa o estado de login
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userEmail');
-  
-        // Atualiza a interface e redireciona
-        window.location.href = "index.html"; // Redireciona para a página de índice
-      });
-    }
-  
-    // Controle do menu dropdown ao passar o mouse
-    profileMenu.addEventListener('mouseenter', function () {
-      profileDropdown.classList.remove('hidden');
-    });
-  
-    profileMenu.addEventListener('mouseleave', function () {
-      profileDropdown.classList.add('hidden');
-    });
-  
-    // Fecha o menu dropdown se clicar fora dele
-    document.addEventListener('click', function (e) {
-      if (
-        !profileMenu.contains(e.target) &&
-        !profileDropdown.contains(e.target)
-      ) {
-        profileDropdown.classList.add('hidden');
-      }
-    });
-  
-    // Alterna entre os temas (escuro e claro)
-    document.getElementById('theme-toggle').addEventListener('click', function () {
-      // Alterna as classes de tema
-      const isDarkTheme = document.body.classList.toggle('black-theme');
-      document.body.classList.toggle('white-theme', !isDarkTheme);
-  
-      // Alterar o ícone do botão conforme o tema
-      let icon = document.querySelector(".theme-toggle .icon");
-      if (isDarkTheme) {
-        icon.innerText = "🌙"; // Lua para tema escuro
-      } else {
-        icon.innerText = "☀️"; // Sol para tema claro
-      }
-    });
-})
+    const logo = document.querySelector('.logo');
+    logo.src = isDarkTheme ? 'img/OS_Logotipo_White.png' : 'img/OS_Logotipo_Black.png';
+});

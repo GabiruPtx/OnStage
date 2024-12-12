@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     fileira: seat.getAttribute("data-fileira") || '',
                     numero: seat.getAttribute("data-numero") || '',
                     tipo: seat.getAttribute("data-tipo") || '',
-                    estado: seat.classList.contains("selected") ? "RESERVADO" : (seat.getAttribute("data-estado") || 'DISPONIVEL')
+                    estado: seat.classList.contains("selected") ? "SELECIONADO" : (seat.getAttribute("data-estado") || 'DISPONIVEL')
                 };
                 
                 // Verificação de dados antes de adicionar

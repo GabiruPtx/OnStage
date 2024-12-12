@@ -147,6 +147,7 @@
                     evento eventoAtual = (evento) request.getAttribute("evento");
                     List<Map<String, String>> assentosSelecionados = (List<Map<String, String>>) request.getAttribute("assentos");
                     int numAssentos = assentosSelecionados.size();
+                    System.out.println("Print de checkup - selecaoIngressos");
                     for (Map<String, String> assento : assentosSelecionados) {
                         System.out.println("Assento ID: " + assento.get("id") + 
                                           ", Fileira: " + assento.get("fileira") + 
@@ -203,6 +204,8 @@
                     <p>Total: R$ <span id="total-price">0,00</span></p>
                 </div>
                 <div class="payment">
+                    <imput type="hidden" id="sessao-id" value=""></imput>
+                    <imput type="hidden" id="assentos-selecionados" value=""></imput>
                     <button onclick="proceedToCheckout()" id="checkout-btn" disabled>Ir para Pagamento</button>
                 </div>
             </div>
@@ -210,6 +213,21 @@
     </div>
 
     <script>
+        const assentosSelecionados = document.getElementById("assentos-selecionados");
+
+        assentosSelecionados.value = '<%= assentosSelecionados %>';
+
+    </script>
+
+    <script>
+
+        const sessaoId = "<%= sessaoEvento != null ? sessaoEvento.getId() : "" %>";
+        console.log("Sessão ID: " + sessaoId);
+        const sessaoIdInput = document.getElementById("sessao-id");
+        sessaoIdInput.value = sessaoId;
+
+
+
         let totalAssentos = <%= numAssentos %> ;
         let totalSelecionados = 0;
         let totalPreco = 0;
@@ -260,6 +278,22 @@
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = 'Checkout';
+
+                const sessaoId = document.getElementById('sessao-id').value;
+                const sessaoInput = document.createElement('input');
+                sessaoInput.type = 'hidden';
+                sessaoInput.name = 'sessaoId';
+                sessaoInput.value = sessaoId;
+                form.appendChild(sessaoInput);
+
+                // Adicionar os assentos selecionados como campos hidden
+                const assentosSelecionados = document.getElementById('assentos-selecionados').value;
+                const assentosInput = document.createElement('input');
+                assentosInput.type = 'hidden';
+                assentosInput.name = 'assentosSelecionados'; // Mudando o nome para corresponder ao servlet
+                console.log("assentosSelecionados: " + assentosSelecionados);
+                assentosInput.value = (assentosSelecionados);
+                form.appendChild(assentosInput);
 
                 // Adicionar dados como campos hidden
                 const ticketsInput = document.createElement('input');

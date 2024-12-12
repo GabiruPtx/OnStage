@@ -147,6 +147,12 @@
                     evento eventoAtual = (evento) request.getAttribute("evento");
                     List<Map<String, String>> assentosSelecionados = (List<Map<String, String>>) request.getAttribute("assentos");
                     int numAssentos = assentosSelecionados.size();
+                    for (Map<String, String> assento : assentosSelecionados) {
+                        System.out.println("Assento ID: " + assento.get("id") + 
+                                          ", Fileira: " + assento.get("fileira") + 
+                                          ", Número: " + assento.get("numero") + 
+                                          ", Estado: " + assento.get("estado"));
+                    }
                 %>
                 <div class="movie-info">
                     <h3><%= eventoAtual.getTitulo() %></h3>

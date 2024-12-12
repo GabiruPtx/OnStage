@@ -121,6 +121,8 @@ public class AssentoServlet extends HttpServlet {
             String assentosSelecionados = req.getParameter("assentosSelecionados");
             String sessaoIdParam = req.getParameter("sessaoId");
 
+
+
             if (assentosSelecionados == null || sessaoIdParam == null) {
                 throw new IllegalArgumentException("Dados insuficientes para processar a solicitação.");
             }
@@ -148,10 +150,11 @@ public class AssentoServlet extends HttpServlet {
 
             // Atualiza cada assento no banco de dados
             for (Map<String, String> assento : assentos) {
-                assento.get("id");
-                char fileira = assento.get("id").charAt(0);
-                int numero = Integer.parseInt(assento.get("id").substring(1));
-                String tipo = assento.get("tipo");
+                
+                char fileira = assento.get("fileira").charAt(0);
+                int numero = Integer.parseInt(assento.get("numero"));
+
+                System.out.println("Fileira: " + fileira + ", Número: " + numero + ", Sala ID: " + salaId);
 
                 // Define o novo estado como reservado
                 assentoDAO.atualizarEstadoAssento(salaId, fileira, numero, "RESERVADO");

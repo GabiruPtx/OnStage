@@ -24,6 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compra de Ingressos</title>
     <link rel="stylesheet" href="css/selecaoingressos.css">
+    <!--<link rel="stylesheet" href="css/style.css">-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -266,15 +267,6 @@
                 form.submit();
             }
         }
-
-        // Theme toggle
-        document.getElementById('theme-toggle').addEventListener('click', function() {
-            const isDarkTheme = document.body.classList.toggle('black-theme');
-            document.body.classList.toggle('white-theme', !isDarkTheme);
-            
-            let icon = document.querySelector(".theme-toggle .icon");
-            icon.innerText = isDarkTheme ? "🌙" : "☀️";
-        });
     </script>
 
     <!-- Rodapé -->

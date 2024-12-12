@@ -129,7 +129,7 @@ public class AssentoServlet extends HttpServlet {
 
             // Obtém o id da sala através da sessão
             Sessao sessao = sessaoDAO.getSessaoById(sessaoId);
-            System.out.println("Id do evento: " + sessao.getId_evento());
+            System.out.println("Id do evento - AssentoServlet: " + sessao.getId_evento());
             int id_evento = sessao.getId_evento();
             evento evento = eventoDAO.buscarEventoPorId (id_evento);
 
@@ -159,6 +159,12 @@ public class AssentoServlet extends HttpServlet {
             // Redireciona para a página de ingressos
             req.setAttribute("sessao", sessao);
             req.setAttribute("evento", evento);
+            for (Map<String, String> assento : assentos) {
+                System.out.println("Assento ID: " + assento.get("id") + 
+                                  ", Fileira: " + assento.get("fileira") + 
+                                  ", Número: " + assento.get("numero") + 
+                                  ", Estado: " + assento.get("estado"));
+            }
             req.setAttribute("assentos", assentos);
             req.getRequestDispatcher("selecaoingressos.jsp").forward(req, resp);
 

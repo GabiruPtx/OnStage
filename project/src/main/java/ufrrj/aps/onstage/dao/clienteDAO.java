@@ -44,7 +44,7 @@ public class clienteDAO {
             
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
-                    cliente.setId(rs.getLong(1));
+                    cliente.setId(rs.getInt(1));
                     if (cliente.getEndereco() != null) {
                         cliente.getEndereco().setIdCliente(cliente.getId());
                         enderecoDAO.inserir(cliente.getEndereco(), conn);
@@ -116,7 +116,7 @@ public class clienteDAO {
     private cliente extrairCliente(ResultSet rs) throws SQLException {
         cliente cliente = new cliente();
 
-        cliente.setId(rs.getLong("id_cliente"));
+        cliente.setId(rs.getInt("id_cliente"));
         cliente.setNome(rs.getString("nome"));
         cliente.setSobrenome(rs.getString("sobrenome"));
         cliente.setEmail(rs.getString("email"));

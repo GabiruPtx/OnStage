@@ -2,7 +2,7 @@ package ufrrj.aps.onstage.model;
 
 public class cliente {
 
-    private Long id;
+    private int  id;
     private String nome;
     private String sobrenome;
     private String email;
@@ -31,11 +31,11 @@ public class cliente {
 
     };
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

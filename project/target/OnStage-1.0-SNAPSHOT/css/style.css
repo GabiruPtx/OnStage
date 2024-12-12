@@ -57,7 +57,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: 'Arial';
+  font-family: 'Poppins', sans-serif;
 }
 
 .auth-btn:hover {

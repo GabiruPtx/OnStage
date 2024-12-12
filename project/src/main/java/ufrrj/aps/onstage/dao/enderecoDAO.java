@@ -34,7 +34,7 @@ public class enderecoDAO {
     }
 
     // Busca um endereço pelo ID do cliente
-    public endereco buscarPorClienteId(Long clienteId) throws SQLException {
+    public endereco buscarPorClienteId(int clienteId) throws SQLException {
         String sql = "SELECT * FROM endereco WHERE id_cliente = ?";
 
         try (Connection conn = DBConnection.getConection();
@@ -56,7 +56,7 @@ public class enderecoDAO {
         endereco endereco = new endereco();
 
         endereco.setId(rs.getLong("id_endereco"));
-        endereco.setIdCliente(rs.getLong("id_cliente"));
+        endereco.setIdCliente(rs.getInt("id_cliente"));
         endereco.setLogradouro(rs.getString("logradouro"));
         endereco.setNumero(rs.getString("numero"));
         endereco.setComplemento(rs.getString("complemento"));

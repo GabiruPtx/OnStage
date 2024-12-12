@@ -248,7 +248,7 @@ body {
 .movie-info {
   display: flex;
   flex-direction: column; /* Garante que os itens fiquem um abaixo do outro */
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   
 }
 

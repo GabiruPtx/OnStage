@@ -148,6 +148,7 @@ public class AssentoServlet extends HttpServlet {
 
             // Atualiza cada assento no banco de dados
             for (Map<String, String> assento : assentos) {
+                assento.get("id");
                 char fileira = assento.get("id").charAt(0);
                 int numero = Integer.parseInt(assento.get("id").substring(1));
                 String tipo = assento.get("tipo");

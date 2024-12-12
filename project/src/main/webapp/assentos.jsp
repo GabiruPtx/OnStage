@@ -117,8 +117,13 @@
                       </c:if>
                       
                       <div class="${seatClass}" 
-                           data-seat="${assento.fileira}${assento.numero}" 
-                           data-tipo="${assento.tipo}">
+                          data-seat-id="${assento.id}"
+                          data-sala-id="${assento.id_sala}"
+                          data-fileira="${assento.fileira}"
+                          data-numero="${assento.numero}"
+                          data-tipo="${assento.tipo}"
+                          data-estado="${assento.estado}"
+                          data-identificador="${assento.fileira}${assento.numero}">
                           ${assento.fileira}${assento.numero}
                       </div>
                   </c:forEach>

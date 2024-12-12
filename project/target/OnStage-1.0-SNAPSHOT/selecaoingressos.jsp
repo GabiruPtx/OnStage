@@ -183,7 +183,7 @@
                     <p>Assentos: 
                         <% 
                             for (int i = 0; i < assentosSelecionados.size(); i++) {
-                                out.print(assentosSelecionados.get(i).get("id"));
+                                out.print(assentosSelecionados.get(i).get("fileira") + assentosSelecionados.get(i).get("numero"));
                                 if (i < assentosSelecionados.size() - 1) {
                                     out.print(", ");
                                 }
